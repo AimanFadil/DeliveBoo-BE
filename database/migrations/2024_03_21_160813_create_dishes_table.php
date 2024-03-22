@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('restaurant_id')->nullable();
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('set null');
+            $table->string('name');
+            $table->text('ingredients')->nullable();
+            $table->text('description')->nullable();
+            $table->decimal('price');
+            $table->boolean('visible')->default(true);
+            $table->string('image')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

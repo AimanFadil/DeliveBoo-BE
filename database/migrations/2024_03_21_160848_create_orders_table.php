@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('restaurant_id')->nullable();
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('set null');
+            $table->dateTime('date_delivery');
+            $table->decimal('price');
+            $table->string('name');
+            $table->string('mail');
+            $table->string('address');
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
