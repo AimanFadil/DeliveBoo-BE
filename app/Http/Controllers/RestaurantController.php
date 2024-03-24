@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
+use App\Models\User;
+
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+
 
 class RestaurantController extends Controller
 {
@@ -25,7 +30,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('restaurants.create');
     }
 
     /**
@@ -36,8 +41,28 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        //
+        $user =  Restaurant::where('user_id', '=', Auth::id());
+        if($user == null ){
+            Restaurant::create([
+                'business_name' => $request->business_name,
+                'address' => $request->address,
+                'vat_number' => $request->vat_number,
+                'slug' => str_replace(' ', '-', $request->business_name),
+                
+                'logo' => $request->logo,
+                'user_id' => Auth::id(),
+
+            
+            ]);
+            return view('restaurants.index');
+        }
+        else{
+            return view('dashboard');
+        }
+        
+
     }
+    
 
     /**
      * Display the specified resource.

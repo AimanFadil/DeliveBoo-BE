@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     use HasFactory;
+    protected $fillable = ['business_name', 'address', 'vat_number', 'slug', 'logo', 'user_id'];
+
     public function user()
     {
-        return $this->belongsTo(Restaurant::class);
+        return $this->belongsTo(User::class);
     }
     public function typologies()
     {

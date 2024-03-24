@@ -13,7 +13,7 @@ class StoreRestaurantRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,29 @@ class StoreRestaurantRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'business_name' => 'required|max:150',
+            'address' => 'required',
+            'vat_number' => 'required|max:11',
+            'logo' => 'required',
+            
+          
+        ];
+    }
+
+    public function meassages()
+    {
+        return [
+            'business_name.required' => 'Il business_name del progetto è obbligatorio',
+            'business_name.max' => 'Il business_name del progetto può essere lungo massimo 150 caratteri',
+            'address.required' => 'Questo tipo non esiste',
+            'vat_number.required' => 'Il vat_number del progetto è obbligatorio',
+            'vat_number.max' => 'Il vat_number del progetto può essere lungo massimo 11 caratteri',
+            'logo.required' => 'La logo del progetto è obbligatoria',
+            
+
+
+
         ];
     }
 }
+
