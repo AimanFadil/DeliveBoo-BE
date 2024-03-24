@@ -73,9 +73,9 @@ class DisheController extends Controller
      * @param  \App\Models\Dishe  $dishe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dishe $dishe)
+    public function edit(Dishe $dish)
     {
-        //
+        return view('admin.dish.edit', compact('dish'));
     }
 
     /**
@@ -87,7 +87,22 @@ class DisheController extends Controller
      */
     public function update(UpdateDisheRequest $request, Dishe $dishe)
     {
-        //
+        // TODO: fix update record
+        
+        $form_data = $request->all();
+
+        $dish = Dishe::find($dishe->id);
+
+
+        $dish->name = $form_data['name'];
+        $dish->price = $form_data['price'];
+        $dish->description = $form_data['description'];
+        $dish->ingredients = $form_data['ingredients'];
+        $dish->slug = Str::Slug($dishe->name, '-');
+
+        $dish->save();
+
+        return redirect()->route('admin.dish.index');
     }
 
     /**
@@ -98,6 +113,10 @@ class DisheController extends Controller
      */
     public function destroy(Dishe $dishe)
     {
-        //
+        // TODO: fix delete record from database
+        $dishe = Dishe::where('id', $dishe->id)->first();
+        dd($dishe);
+        $dishe->delete();
+        return redirect()->route('admin.dish.index');
     }
 }

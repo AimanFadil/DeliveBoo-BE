@@ -18,6 +18,7 @@
                             <th>Ingredienti</th>
                             <th>Descrizione</th>
                             <th>prezzo</th>
+                            <th>Tools</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,6 +28,19 @@
                                 <td>{{ $dish->ingredients }}</td>
                                 <td>{{ $dish->description }}</td>
                                 <td>{{ $dish->price }}</td>
+                                <td>
+                                    <a href="{{ route('admin.dish.edit', ['dish' => $dish->id]) }}"
+                                        class="btn btn-sm btn-warning me-1"><i
+                                            class="fa-solid fa-pen-to-square"></i></a>
+                                    
+                                    <form action="{{ route('admin.dish.destroy', ['dish' => $dish->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-sm btn-danger"><i
+                                                class="fa-solid fa-trash" onclick="return confirm('Sei sicuro di voler eliminare questo Piatto?')"></i></i></button>
+                                    </form>
                             </tr>
                         @endforeach
                     </tbody>
