@@ -67,7 +67,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
+                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{__('Dashboard')}}</a>
                                 <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -84,10 +84,32 @@
                 </div>
             </div>
         </nav>
+        <div class="container-fluid vh-100">
+            <div class="row h-100">
+                <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-success navbar-dark sidebar collapse">
+                    <div class="position-sticky pt-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                {{ Route::currentRouteName() }}
+                                <a href="{{ url('dashboard') }}" class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}">
+                                    <i class="fa-solid fa-tachometer fa-lg fa-fw"></i>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.dish.index') }}" class="nav-link text-white {{ Route::currentRouteName() == 'admin.dish.index' ? 'bg-secondary' : '' }}">
+                                    <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>
+                                    Piatti
+                                </a>
+                            </li>
+                        </ul>
+                </nav>
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
+                    @yield('content')
+                </main>
+            </div>
+        </div>
 
-        <main class="">
-            @yield('content')
-        </main>
     </div>
 </body>
 

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Dishe;
 use App\Http\Requests\StoreDisheRequest;
 use App\Http\Requests\UpdateDisheRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+
 
 class DisheController extends Controller
 {
@@ -15,7 +18,9 @@ class DisheController extends Controller
      */
     public function index()
     {
-        //
+        $dishes = Dishe::all();
+
+        return view('admin.dish.index', compact('dishes'));
     }
 
     /**
@@ -25,7 +30,7 @@ class DisheController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dish.create');
     }
 
     /**
@@ -36,7 +41,19 @@ class DisheController extends Controller
      */
     public function store(StoreDisheRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $new_dish = new Dishe();
+
+        $new_dish->name = $form_data['name'];
+        $new_dish->price = $form_data['price'];
+        $new_dish->description = $form_data['description'];
+        $new_dish->ingredients = $form_data['ingredients'];
+        $new_dish->slug = Str::Slug($new_dish->name, '-');
+
+        $new_dish->save();
+
+        return redirect()->route('admin.dish.index');
     }
 
     /**
