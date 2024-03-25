@@ -30,7 +30,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('restaurants.create');
+        $user = Auth::user();
+        return view('restaurants.create', compact('user'));
     }
 
     /**

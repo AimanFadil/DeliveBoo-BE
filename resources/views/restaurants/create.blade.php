@@ -4,10 +4,14 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Create new restaurant ') }}</div>
+                <h2 class="text-success text-center display-4">Benvenuto {{ $user->name }}</h2>
+                <h3 class="text-center text-muted font-italic py-4">Ora che sei loggato procedi alla creazione del tuo
+                    ristorante
+                </h3>
+                <div class="card ">
+                    <div class="card-header background-green text-white">{{ __('Create new restaurant ') }}</div>
 
-                    <div class="card-body">
+                    <div class="card-body bg-forms">
                         <form method="POST" action="{{ route('restaurants.store') }}">
                             @csrf
 
@@ -82,7 +86,7 @@
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn background-green text-white">
                                         {{ __('Create New Restaurant') }}
                                     </button>
                                 </div>
