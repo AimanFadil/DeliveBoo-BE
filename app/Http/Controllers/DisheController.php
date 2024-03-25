@@ -7,6 +7,7 @@ use App\Http\Requests\StoreDisheRequest;
 use App\Http\Requests\UpdateDisheRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 
 class DisheController extends Controller
@@ -45,11 +46,17 @@ class DisheController extends Controller
 
         $new_dish = new Dishe();
 
+        if($request->hasFile('image')){
+            $path = Storage::disk('public')->put('images', $form_data['image']);
+            $form_data['image'] = $path;
+        }
+
         $new_dish->name = $form_data['name'];
         $new_dish->price = $form_data['price'];
         $new_dish->description = $form_data['description'];
         $new_dish->ingredients = $form_data['ingredients'];
         $new_dish->visible = $form_data['visible'];
+        $new_dish->image = $form_data['image'];
         $new_dish->slug = Str::Slug($new_dish->name, '-');
         $new_dish->save();
 
@@ -62,9 +69,9 @@ class DisheController extends Controller
      * @param  \App\Models\Dishe  $dishe
      * @return \Illuminate\Http\Response
      */
-    public function show(Dishe $dishe)
+    public function show(Dishe $dish)
     {
-        //
+        return view('admin.dish.show', compact('dish'));
     }
 
     /**
@@ -92,11 +99,17 @@ class DisheController extends Controller
 
         $dish = Dishe::find($dish->id);
 
+        if($request->hasFile('image')){
+            $path = Storage::disk('public')->put('images', $form_data['image']);
+            $form_data['image'] = $path;
+        }
 
         $dish->name = $form_data['name'];
         $dish->price = $form_data['price'];
         $dish->description = $form_data['description'];
         $dish->ingredients = $form_data['ingredients'];
+        $dish->visible = $form_data['visible'];
+        $dish->image = $form_data['image'];
         $dish->slug = Str::Slug($dish->name, '-');
 
         $dish->save();

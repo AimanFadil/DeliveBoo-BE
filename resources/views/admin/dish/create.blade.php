@@ -29,12 +29,12 @@
                     <input type="file" class="form-control" id="image" name="image">
 
                     <label for="visible" class="form-label">Disponibile</label>
-                    <select id="visible" name="visible">
+                    <select id="visible" name="visible" class="form-select">
                         <option value="1">1</option>
                         <option value="0">0</option>
                     </select>
 
-                    <button type="submit" class="btn btn-sm btn-success">Aggiungi</button>
+                    <button type="submit" class="btn btn-sm btn-success my-2">Aggiungi</button>
                 </form>
         </div>
     </div>

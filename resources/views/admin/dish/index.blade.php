@@ -25,10 +25,11 @@
                     <tbody>
                         @foreach ($dishes as $dish)
                             <tr>
-                                <td>{{ $dish->name }}</td>
+                                <td><a href="{{ route('admin.dish.show', ['dish' => $dish->id])}}" class="text-decoration-none text-black">
+                                    {{ $dish->name }}</a></td>
                                 <td>{{ $dish->ingredients }}</td>
                                 <td>{{ $dish->description }}</td>
-                                <td>{{ $dish->price }}</td>
+                                <td>{{ $dish->price }}€</td>
                                 <td>
                                     @if ($dish->visible == 0)
                                     <span class="badge bg-danger">Non Disponibile</span>
@@ -46,7 +47,7 @@
                                         @csrf
                                         @method('DELETE')
 
-                                        <button type="submit" class="btn btn-sm btn-danger"><i
+                                        <button type="submit" class="btn btn-sm btn-danger my-1"><i
                                                 class="fa-solid fa-trash" onsubmit="return confirm('Sei sicuro di voler eliminare questo Piatto?')"></i></i>
                                         </button>
                                     </form>

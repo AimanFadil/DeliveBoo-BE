@@ -25,7 +25,16 @@
                 <label for="price" class="form-label">Prezzo</label>
                 <input type="number" class="form-control" id="price" name="price" value="{{ $dish->price }}">
 
-                <button type="submit" class="btn btn-sm btn-success">Modifica</button>
+                <label for="image" class="form-label">Immagine</label>
+                <input type="file" class="form-control" id="image" name="image">
+
+                <label for="visible" class="form-label">Disponibile</label>
+                <select id="visible" name="visible" class="form-select" value="{{ $dish->visible }}">
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                </select>
+
+                <button type="submit" class="btn btn-sm btn-success my-2">Modifica</button>
             </form>
     </div>
 </div>
