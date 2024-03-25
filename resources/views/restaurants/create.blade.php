@@ -5,21 +5,23 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
+
                 <h2 class="text-success text-center display-4">Benvenuto {{ $user->name }}</h2>
                 <h3 class="text-center text-muted font-italic py-4">Ora che sei loggato procedi alla creazione del tuo
                     ristorante
                 </h3>
                 <div class="card border-success-subtle border-2 ">
 
-                    <div class="card-header background-green text-white">{{ __('Create new restaurant ') }}</div>
+                    <div class="card-header background-green text-white">{{ __('Crea nuovo Ristorante') }}</div>
 
                     <div class="card-body bg-forms">
-                        <form method="POST" action="{{ route('restaurants.store') }}">
+                        <form method="POST" action="{{ route('restaurants.store') }}"enctype="multipart/form-data">
+
                             @csrf
 
                             <div class="mb-4 row">
                                 <label for="business_name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('business_name') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome ristorante') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="business_name" type="text"
@@ -37,7 +39,7 @@
 
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="address"
@@ -54,7 +56,7 @@
 
                             <div class="mb-4 row">
                                 <label for="vat_number"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('vat_number') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('P.iva') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="vat_number" type="vat_number"
@@ -71,10 +73,10 @@
 
                             <div class="mb-4 row">
                                 <label for="logo"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('logo') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Logo') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="logo" type="logo"
+                                    <input id="logo" type="file"
                                         class="form-control @error('logo') is-invalid @enderror" name="logo" required
                                         autocomplete="new-logo">
 
@@ -95,8 +97,12 @@
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-success  background-green">
-                                        {{ __('Create New Restaurant') }}
+
+
+
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Crea nuovo Ristorante') }}
+
                                     </button>
                                 </div>
                             </div>

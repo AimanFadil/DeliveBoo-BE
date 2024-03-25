@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     @if (count($dishes) > 0)
         <div class="container-fluid">
             <div class="row">
@@ -20,9 +21,10 @@
                                 <th class="w-dish text-success">Nome piatto</th>
                                 <th class="text-success">Ingredienti</th>
                                 <th class="text-success">Descrizione</th>
-                                <th class="text-success">prezzo</th>
+                                <th class="text-success">Prezzo</th>
                                 <th class="text-success">Disponibile</th>
                                 <th class="text-success">Tools</th>
+
                             </tr>
                         </thead>
                         <tbody>

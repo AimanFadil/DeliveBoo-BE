@@ -17,23 +17,62 @@
 
 
                     <label for="name" class="form-label fw-semibold">Nome Piatto</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ $dish->name }}">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                        name="name" value="{{ $dish->name }}">
+
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 
                     <hr>
 
                     <label for="ingredients" class="form-label fw-semibold">Ingredienti</label>
-                    <input type="text" class="form-control" id="ingredients" name="ingredients"
-                        value="{{ $dish->ingredients }}">
+                    <input type="text" class="form-control @error('ingredients') is-invalid @enderror" id="ingredients"
+                        name="ingredients" value="{{ $dish->ingredients }}">
+
+                    @error('ingredients')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 
                     <hr>
 
                     <label for="description" class="form-label fw-semibold">Descrizione</label>
-                    <textarea class="form-control" id="description" name="description" rows="3" value="{{ $dish->description }}"></textarea>
+                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
+                        rows="3" value="{{ $dish->description }}"></textarea>
+
+
+                    @error('description')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 
                     <hr>
 
                     <label for="price" class="form-label fw-semibold">Prezzo</label>
-                    <input type="number" class="form-control" id="price" name="price" value="{{ $dish->price }}">
+                    <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
+                        name="price" value="{{ $dish->price }}">
+
+
+                    @error('price')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+
+                    <label for="image" class="form-label">Immagine</label>
+                    <input type="file" class="form-control" id="image" name="image">
+
+                    <label for="visible" class="form-label">Disponibile</label>
+                    <select id="visible" name="visible" class="form-select" value="{{ $dish->visible }}">
+                        <option value="1">1</option>
+                        <option value="0">0</option>
+                    </select>
+
                     <div class="col-12 d-flex justify-content-end">
                         <button type="submit" class="btn btn-sm btn-success fw-semibold m-4 p-2 hover-3">Modifica</button>
                     </div>
@@ -43,4 +82,15 @@
                 </form>
             </div>
         </div>
-    @endSection
+    </div>
+@endSection
+@if ($errors->any())
+    <div class="alert alert-warning" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+@endSection
