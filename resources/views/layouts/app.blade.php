@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -24,8 +28,6 @@
 
 <body class="">
     <div id="app">
-
-
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm p-0 ">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
@@ -46,8 +48,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link colorgreen red-hover fw-bolder"
-                                href="{{ url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link hover-navitem fw-bolder" href="{{ url('/') }}"><i
+                                    class="fa-solid fa-house me-1"></i>{{ __('Home') }}</a>
 
                         </li>
                     </ul>
@@ -57,25 +59,27 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link colorgreen red-hover fw-bolder"
+                                <a class="nav-link hover-navitem fw-bolder"
                                     href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link colorgreen red-hover fw-bolder "
+                                    <a class="nav-link hover-navitem fw-bolder "
                                         href="{{ route('register') }}">{{ __('Register') }}</a>
 
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle colorgreen red-hover" href="#"
-                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle hover-navitem fw-bolder"
+                                    href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" v-pre>
+                                    <i class="fa-regular fa-user me-1"></i>
                                     {{ Auth::user()->name }}
+
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right colorgreen" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item colorgreen red-hover"
                                         href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
                                     <a class="dropdown-item colorgreen red-hover"
@@ -88,7 +92,8 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none colorgreen">
                                         @csrf
                                     </form>
                                 </div>
