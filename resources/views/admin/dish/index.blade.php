@@ -32,7 +32,9 @@
                                 <tr>
                                     <td>
                                         <div class="h-100 w-100 hover-show-dishe">
-                                            {{ $dish->name }}
+                                            <a href="{{ route('admin.dish.show', ['dish' => $dish->id]) }}"
+                                                class="text-decoration-none text-black">
+                                                {{ $dish->name }}</a>
                                         </div>
                                     </td>
                                     <td>{{ $dish->ingredients }}</td>

@@ -55,15 +55,15 @@ class DisheController extends Controller
         if($request->hasFile('image')){
             $path = Storage::disk('public')->put('images', $form_data['image']);
             $form_data['image'] = $path;
+            $new_dish->image = $form_data['image'];
         }
-        $dish = Dishe::create($request->validated());
+       /*  $dish = Dishe::create($request->validated()); */
         
         $new_dish->name = $form_data['name'];
         $new_dish->price = $form_data['price'];
         $new_dish->description = $form_data['description'];
         $new_dish->ingredients = $form_data['ingredients'];
         $new_dish->visible = $form_data['visible'];
-        $new_dish->image = $form_data['image'];
         $new_dish->slug = Str::Slug($new_dish->name, '-');
         $new_dish->restaurant_id = $restaurant->id;
         $new_dish->save();
@@ -110,6 +110,7 @@ class DisheController extends Controller
         if($request->hasFile('image')){
             $path = Storage::disk('public')->put('images', $form_data['image']);
             $form_data['image'] = $path;
+            $dish->image = $form_data['image'];
         }
 
         $dish->name = $form_data['name'];
@@ -117,7 +118,6 @@ class DisheController extends Controller
         $dish->description = $form_data['description'];
         $dish->ingredients = $form_data['ingredients'];
         $dish->visible = $form_data['visible'];
-        $dish->image = $form_data['image'];
         $dish->slug = Str::Slug($dish->name, '-');
 
         $dish->save();

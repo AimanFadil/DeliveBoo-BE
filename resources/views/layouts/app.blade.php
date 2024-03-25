@@ -126,7 +126,7 @@
     <div class="container-fluid vh-100">
         <div class="row h-100">
 
-            <main class="col-md-9  col-lg-12 px-md-4 pt-3">
+            <main class="col-md-9  col-lg-12 p-0 m-0 ">
                 @yield('content')
             </main>
 

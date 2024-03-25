@@ -42,7 +42,7 @@
 
                     <label for="description" class="form-label fw-semibold">Descrizione</label>
                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-                        rows="3" value="{{ $dish->description }}"></textarea>
+                        rows="3">{{ $dish->description }}</textarea>
 
 
                     @error('description')
@@ -83,14 +83,4 @@
             </div>
         </div>
     </div>
-@endSection
-@if ($errors->any())
-    <div class="alert alert-warning" role="alert">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 @endSection
