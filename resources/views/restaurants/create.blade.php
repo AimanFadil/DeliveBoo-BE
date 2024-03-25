@@ -5,15 +5,15 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Create new restaurant ') }}</div>
+                    <div class="card-header">{{ __('Crea nuovo Ristorante') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('restaurants.store') }}">
+                        <form method="POST" action="{{ route('restaurants.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="mb-4 row">
                                 <label for="business_name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('business_name') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome ristorante') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="business_name" type="text"
@@ -31,7 +31,7 @@
 
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="address"
@@ -48,7 +48,7 @@
 
                             <div class="mb-4 row">
                                 <label for="vat_number"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('vat_number') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('P.iva') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="vat_number" type="vat_number"
@@ -65,10 +65,10 @@
 
                             <div class="mb-4 row">
                                 <label for="logo"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('logo') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Logo') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="logo" type="logo"
+                                    <input id="logo" type="file"
                                         class="form-control @error('logo') is-invalid @enderror" name="logo" required
                                         autocomplete="new-logo">
 
@@ -83,7 +83,7 @@
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Create New Restaurant') }}
+                                        {{ __('Crea nuovo Ristorante') }}
                                     </button>
                                 </div>
                             </div>
