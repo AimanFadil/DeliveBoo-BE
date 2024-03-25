@@ -85,6 +85,13 @@
                                     @enderror
                                 </div>
                             </div>
+                            @foreach ($typologies as $typology)
+                                <div class="form-check-inline">
+                                    <input type="checkbox" name="typology[]" id="typology-{{ $typology->id }}"
+                                        class="form-check-input" value="{{ $typology->id }}" @checked(is_array(old('typology')) && in_array($typology->id, old('typology')))>
+                                    <label for="" class="form-check-label">{{ $typology->name }}</label>
+                                </div>
+                            @endforeach
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">

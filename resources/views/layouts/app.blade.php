@@ -84,6 +84,13 @@
                                 </li>
                             @endif
                         @else
+                            @if (!Auth::user()->restaurant()->exists('user_id'))
+                                <li class="nav-item">
+                                    <a class="btn btn-sm btn-primary mt-1 me-3"
+                                        href="{{ url('restaurants/create') }}">{{ __('Create your Restaurant') }}
+                                    </a>
+                                </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle hover-navitem fw-bolder"
                                     href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -98,8 +105,6 @@
                                         href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                     <a class="dropdown-item colorgreen red-hover"
                                         href="{{ url('profile') }}">{{ __('Profile') }}</a>
-                                    <a class="dropdown-item colorgreen red-hover"
-                                        href="{{ url('restaurants/create') }}">{{ __('Create your Restaurant') }}</a>
                                     <a class="dropdown-item colorgreen red-hover" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

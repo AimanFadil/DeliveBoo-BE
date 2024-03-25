@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dishe;
+use App\Models\Restaurant;
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Requests\StoreDisheRequest;
 use App\Http\Requests\UpdateDisheRequest;
 use App\Http\Controllers\Controller;
@@ -18,7 +21,8 @@ class DisheController extends Controller
      */
     public function index()
     {
-        $dishes = Dishe::all();
+        $restaurant = Restaurant::where('user_id', '=',Auth::user()->id)->first();
+        $dishes = Dishe::where('restaurant_id', $restaurant->id)->orderBy('name', 'asc')->get();
 
         return view('admin.dish.index', compact('dishes'));
     }
@@ -42,6 +46,7 @@ class DisheController extends Controller
     public function store(StoreDisheRequest $request)
     {
         $form_data = $request->all();
+        $restaurant = Restaurant::where('user_id', '=',Auth::user()->id)->first();
 
         $new_dish = new Dishe();
 
@@ -51,6 +56,7 @@ class DisheController extends Controller
         $new_dish->ingredients = $form_data['ingredients'];
         $new_dish->visible = $form_data['visible'];
         $new_dish->slug = Str::Slug($new_dish->name, '-');
+        $new_dish->restaurant_id = $restaurant->id;
         $new_dish->save();
 
         return redirect()->route('admin.dish.index');

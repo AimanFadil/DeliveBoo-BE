@@ -15,6 +15,7 @@
                     @csrf
                     @method('PUT')
 
+
                     <label for="name" class="form-label fw-semibold">Nome Piatto</label>
                     <input type="text" class="form-control" id="name" name="name" value="{{ $dish->name }}">
 
@@ -36,6 +37,8 @@
                     <div class="col-12 d-flex justify-content-end">
                         <button type="submit" class="btn btn-sm btn-success fw-semibold m-4 p-2 hover-3">Modifica</button>
                     </div>
+
+
 
                 </form>
             </div>

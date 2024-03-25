@@ -10,6 +10,7 @@
                 <img src="" alt="">
             </div>
             <div class="col-12">
+
                 <form action="{{ route('admin.dish.store') }}" method="POST"
                     class="form-control my-4 border-success-subtle border-2 bg-forms colorgreen container-shadow"
                     enctype="multipart/form-data">
