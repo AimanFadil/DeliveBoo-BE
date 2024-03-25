@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
+use App\Models\Typology;
 use App\Models\User;
 
 use App\Http\Requests\StoreRestaurantRequest;
@@ -30,7 +31,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('restaurants.create');
+        $typologies = Typology::all();
+        return view('restaurants.create', compact('typologies'));
     }
 
     /**
@@ -43,7 +45,7 @@ class RestaurantController extends Controller
     {
         $user =  Restaurant::where('user_id', '=', Auth::id())->first();
         if($user == null ){
-            Restaurant::create([
+            $restaurant = Restaurant::create([
                 'business_name' => $request->business_name,
                 'address' => $request->address,
                 'vat_number' => $request->vat_number,
@@ -53,9 +55,11 @@ class RestaurantController extends Controller
                 'user_id' => Auth::id(),
 
                 
-
-            
+                
             ]);
+            if(count($request->typology) > 0){
+                $restaurant->typologies()->sync($request->typology);
+            }
             return view('restaurants.index');
         }
         else{
