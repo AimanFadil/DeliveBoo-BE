@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateDisheRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 
 class DisheController extends Controller
@@ -50,7 +51,8 @@ class DisheController extends Controller
             $path = Storage::disk('public')->put('images', $form_data['image']);
             $form_data['image'] = $path;
         }
-
+        $dish = Dishe::create($request->validated());
+        
         $new_dish->name = $form_data['name'];
         $new_dish->price = $form_data['price'];
         $new_dish->description = $form_data['description'];

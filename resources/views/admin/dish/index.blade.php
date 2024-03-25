@@ -17,7 +17,7 @@
                             <th>Nome piatto</th>
                             <th>Ingredienti</th>
                             <th>Descrizione</th>
-                            <th>prezzo</th>
+                            <th>Prezzo</th>
                             <th>Disponibile</th>
                             <th>Tools</th>
                         </tr>

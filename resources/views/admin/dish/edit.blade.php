@@ -8,22 +8,55 @@
                 Modifica il tuo Piatto
             </h1>
         </div>
+        @if ($errors->any())
+        <div class="alert alert-warning" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div class="col-12">
             <form action="{{ route('admin.dish.update', ['dish' => $dish->id]) }}" method="POST" class="form-control my-4" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <label for="name" class="form-label">Nome Piatto</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ $dish->name }}">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $dish->name }}" required>
+
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
 
                 <label for="ingredients" class="form-label">Ingredienti</label>
-                <input type="text" class="form-control" id="ingredients" name="ingredients" value="{{ $dish->ingredients }}">
+                <input type="text" class="form-control @error('ingredients') is-invalid @enderror" id="ingredients" name="ingredients" value="{{ $dish->ingredients }}" required>
+
+                @error('ingredients')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
 
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control" id="description" name="description" rows="3" value="{{ $dish->description }}"></textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3" value="{{ $dish->description }}" required></textarea>
+
+                @error('description')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
 
                 <label for="price" class="form-label">Prezzo</label>
-                <input type="number" class="form-control" id="price" name="price" value="{{ $dish->price }}">
+                <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ $dish->price }}" required>
+
+                @error('price')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
 
                 <label for="image" class="form-label">Immagine</label>
                 <input type="file" class="form-control" id="image" name="image">
