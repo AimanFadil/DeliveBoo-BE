@@ -46,12 +46,26 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <ul class="navbar-nav me-auto ">
                         <li class="nav-item">
                             <a class="nav-link hover-navitem fw-bolder" href="{{ url('/') }}"><i
                                     class="fa-solid fa-house me-1"></i>{{ __('Home') }}</a>
 
                         </li>
+                    </ul>
+                    <ul class="navbar-nav me-auto ">
+                        @if (Auth::check())
+                            <li class="nav-item">
+                                <a class="nav-link colorgreen red-hover fw-bolder {{ Route::currentRouteName() == 'dashboard' ?: '' }}"
+                                    href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link colorgreen red-hover fw-bolder {{ Route::currentRouteName() == 'dashboard' ?: '' }}"
+                                    href="{{ route('admin.dish.index') }}">{{ __('Piatti') }}</a>
+
+                            </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -81,7 +95,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right colorgreen" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item colorgreen red-hover"
-                                        href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
+                                        href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                     <a class="dropdown-item colorgreen red-hover"
                                         href="{{ url('profile') }}">{{ __('Profile') }}</a>
                                     <a class="dropdown-item colorgreen red-hover"
@@ -106,31 +120,13 @@
     </nav>
     <div class="container-fluid vh-100">
         <div class="row h-100">
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-success navbar-dark sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.dashboard') }}"
-                                class="nav-link text-white my-1 pippo size-18 {{ Route::currentRouteName() == 'dashboard' ?: '' }}">
-                                <i class="fa-solid fa-tachometer fa-lg fa-fw"></i>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.dish.index') }}"
-                                class="nav-link text-white my-1 ms-1 pippo size-18 {{ Route::currentRouteName() == 'admin.dish.index' ?: '' }}">
-                                <i class="fa-solid fa-plate-wheat"></i>
-                                Piatti
-                            </a>
-                        </li>
-                    </ul>
-            </nav>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
+
+            <main class="col-md-9  col-lg-12 px-md-4 pt-3">
                 @yield('content')
             </main>
-        </div>
-    </div>
 
+
+        </div>
     </div>
 </body>
 
