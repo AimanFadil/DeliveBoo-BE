@@ -1,1 +1,10 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+.pippo:hover{
+    background-color: rgb(10, 98, 38);
+    transition: 0.7s;
+}
+
+.size-18{
+    font-size: 18px;
+}

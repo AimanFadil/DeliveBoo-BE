@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Dishe;
 use App\Http\Requests\StoreDisheRequest;
 use App\Http\Requests\UpdateDisheRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+
 
 class DisheController extends Controller
 {
@@ -15,7 +18,9 @@ class DisheController extends Controller
      */
     public function index()
     {
-        //
+        $dishes = Dishe::all();
+
+        return view('admin.dish.index', compact('dishes'));
     }
 
     /**
@@ -25,7 +30,7 @@ class DisheController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dish.create');
     }
 
     /**
@@ -36,7 +41,19 @@ class DisheController extends Controller
      */
     public function store(StoreDisheRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $new_dish = new Dishe();
+
+        $new_dish->name = $form_data['name'];
+        $new_dish->price = $form_data['price'];
+        $new_dish->description = $form_data['description'];
+        $new_dish->ingredients = $form_data['ingredients'];
+        $new_dish->visible = $form_data['visible'];
+        $new_dish->slug = Str::Slug($new_dish->name, '-');
+        $new_dish->save();
+
+        return redirect()->route('admin.dish.index');
     }
 
     /**
@@ -56,9 +73,9 @@ class DisheController extends Controller
      * @param  \App\Models\Dishe  $dishe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dishe $dishe)
+    public function edit(Dishe $dish)
     {
-        //
+        return view('admin.dish.edit', compact('dish'));
     }
 
     /**
@@ -68,9 +85,23 @@ class DisheController extends Controller
      * @param  \App\Models\Dishe  $dishe
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDisheRequest $request, Dishe $dishe)
+    public function update(UpdateDisheRequest $request, Dishe $dish)
     {
-        //
+
+        $form_data = $request->all();
+
+        $dish = Dishe::find($dish->id);
+
+
+        $dish->name = $form_data['name'];
+        $dish->price = $form_data['price'];
+        $dish->description = $form_data['description'];
+        $dish->ingredients = $form_data['ingredients'];
+        $dish->slug = Str::Slug($dish->name, '-');
+
+        $dish->save();
+
+        return redirect()->route('admin.dish.index');
     }
 
     /**
@@ -79,8 +110,10 @@ class DisheController extends Controller
      * @param  \App\Models\Dishe  $dishe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dishe $dishe)
+    public function destroy(Dishe $dish)
     {
-        //
+        $dish = Dishe::where('id', $dish->id)->first();
+        $dish->delete();
+        return redirect()->route('admin.dish.index');
     }
 }
