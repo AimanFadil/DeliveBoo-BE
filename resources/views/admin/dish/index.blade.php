@@ -41,16 +41,12 @@
                                             class="btn btn-sm btn-warning me-1"><i
                                                 class="fa-solid fa-pen-to-square"></i></a>
 
-                                        <form action="{{ route('admin.dish.destroy', ['dish' => $dish->id]) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <button type="submit" class="btn btn-sm btn-danger"><i
-                                                    class="fa-solid fa-trash"
-                                                    onsubmit="return confirm('Sei sicuro di voler eliminare questo Piatto?')"></i></i>
-                                            </button>
-                                        </form>
+                                        <button type="button" class="btn_delete btn btn-sm btn-danger"
+                                            data-bs-toggle="modal" data-bs-target="#modal_delete"
+                                            data-dishid="{{ $dish->id }}" data-dishname="{{ $dish->name }}"
+                                            data-type="dish">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -58,6 +54,7 @@
                 </div>
             </div>
         </div>
+        @include('admin.dish.modal_delete')
     @else
         <div class="container">
             <div class="row">
