@@ -2,8 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\DisheController as DisheController;
 use App\Http\Controllers\DashBoardController as DashBoardController;
+
+use App\Http\Controllers\RestaurantController as RestaurantController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +28,9 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::get('/', [DashBoardController::class, 'index'])->name('dashboard');
     Route::resource('/dish', DisheController::class);
 });
+
+Route::resource('/restaurants', RestaurantController::class);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
