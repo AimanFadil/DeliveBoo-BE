@@ -1,10 +1,64 @@
 @import '~bootstrap/scss/bootstrap';
 
-.pippo:hover{
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* colors  */
+.colorgreen {
+    color: rgb(21, 131, 100);
+}
+
+.red-hover {
+    &:hover {
+        color: red;
+        transition-duration: 0.6s;
+    }
+}
+
+.red {
+    color: red;
+}
+
+.bg-forms {
+    background-color: rgba(21, 131, 100, 0.08)
+}
+
+
+.backgroundpages-red {
+    background-color: red;
+}
+
+.background-green {
+    background-color: rgb(21, 131, 100);
+}
+
+.pippo:hover {
     background-color: rgb(10, 98, 38);
     transition: 0.7s;
 }
 
-.size-18{
+.size-18 {
     font-size: 18px;
+}
+
+
+/* welcome page */
+.jumbotron-bg {
+    background-image: url('https://revx.io/storage/2021/08/fast-delivery-scooter-rides-out-smartphone-delivery-concept-online-ordering-food-delivery-last-mile-template-banner-3d-illustration-3d-render-scaled.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* navbar */
+.w-logo {
+    width: 150px;
+
 }
