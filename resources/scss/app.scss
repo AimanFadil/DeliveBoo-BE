@@ -8,28 +8,42 @@
 
 body {
     overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
-/* colors  */
+/* colors e hovers  */
 .colorgreen {
     color: rgb(21, 131, 100);
 }
 
 .red-hover {
     &:hover {
-        color: red;
+        color: rgb(249, 119, 119);
         transition-duration: 0.6s;
     }
 }
 
+.redbg-hover {
+    &:hover {
+        background-color: rgb(249, 119, 119);
+        transition-duration: 0.4s;
+        border: #ff0000;
+    }
+}
+
 .red {
-    color: red;
+    color: rgb(249, 119, 119);
 }
 
 .bg-forms {
     background-color: rgba(21, 131, 100, 0.08)
 }
 
+.bg-orange {
+    background-color: #F5962A;
+}
 
 .backgroundpages-red {
     background-color: red;
@@ -39,9 +53,78 @@ body {
     background-color: rgb(21, 131, 100);
 }
 
+.container-shadow {
+    box-shadow: 10px 10px 5px rgb(45, 74, 66);
+}
+
+.text-shadow {
+    text-shadow: 3px 3px rgb(160, 160, 160)
+}
+
 .pippo:hover {
     background-color: rgb(10, 98, 38);
     transition: 0.7s;
+}
+
+/* hover of add dishes */
+.hover-3 {
+    --b: rgb(21, 131, 100);
+    /* the thickness of the line */
+    --c: rgb(249, 119, 119);
+    /* the color */
+
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    background:
+        linear-gradient(var(--c) 50%, rgb(21, 131, 100) 0) 0% calc(100% - var(--_p, 0%))/100% 200%,
+        linear-gradient(var(--c) 0 0) 0% var(--_p, 0%)/var(--_p, 0%) var(--b) no-repeat;
+    -webkit-background-clip: text, padding-box;
+    background-clip: text, padding-box;
+    transition: .3s var(--_s, 0s) linear, background-size .3s calc(.3s - var(--_s, 0s));
+}
+
+.hover-3:hover {
+    --_p: 100%;
+    --_s: .3s;
+}
+
+.hover-show-dishe {
+    color: #0000;
+    cursor: pointer;
+    background:
+        linear-gradient(90deg, rgb(21, 131, 100) 50%, #000 0) var(--_p, 100%)/200% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: .4s;
+}
+
+.hover-show-dishe:hover {
+    --_p: 0%;
+    font-weight: bolder;
+}
+
+
+
+.hover-navitem {
+    --b: 0.1em;
+    /* the thickness of the line */
+    --c: rgb(249, 119, 119);
+    /* the color */
+
+    color: rgb(21, 131, 100);
+    padding-block: var(--b);
+    background:
+        linear-gradient(var(--c) 50%, #000 0) 0% calc(100% - var(--_p, 0%))/100% 200%,
+        linear-gradient(var(--c) 0 0) 0% var(--_p, 0%)/var(--_p, 0%) var(--b) no-repeat;
+    -webkit-background-clip: text, padding-box;
+    background-clip: text, padding-box;
+    transition: .3s var(--_s, 0s) linear, background-size .3s calc(.3s - var(--_s, 0s));
+}
+
+.hover-navitem:hover {
+    color: rgb(249, 119, 119);
+    --_p: 100%;
+    --_s: .3s;
 }
 
 .size-18 {
@@ -61,4 +144,9 @@ body {
 .w-logo {
     width: 150px;
 
+}
+
+/* index */
+.w-dish {
+    width: 140px;
 }
