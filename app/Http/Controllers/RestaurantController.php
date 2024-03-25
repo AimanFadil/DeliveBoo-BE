@@ -41,7 +41,7 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        $user =  Restaurant::where('user_id', '=', Auth::id());
+        $user =  Restaurant::where('user_id', '=', Auth::id())->first();
         if($user == null ){
             Restaurant::create([
                 'business_name' => $request->business_name,
@@ -51,6 +51,8 @@ class RestaurantController extends Controller
                 
                 'logo' => $request->logo,
                 'user_id' => Auth::id(),
+
+                
 
             
             ]);
