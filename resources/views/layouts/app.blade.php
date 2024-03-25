@@ -14,6 +14,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -90,15 +91,14 @@
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                {{ Route::currentRouteName() }}
-                                <a href="{{ url('dashboard') }}" class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}">
+                                <a href="{{ route('admin.dashboard') }}" class="nav-link text-white my-1 pippo size-18 {{ Route::currentRouteName() == 'dashboard' ? : '' }}">
                                     <i class="fa-solid fa-tachometer fa-lg fa-fw"></i>
                                     Dashboard
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.dish.index') }}" class="nav-link text-white {{ Route::currentRouteName() == 'admin.dish.index' ? 'bg-secondary' : '' }}">
-                                    <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>
+                                <a href="{{ route('admin.dish.index') }}" class="nav-link text-white my-1 ms-1 pippo size-18 {{ Route::currentRouteName() == 'admin.dish.index' ? : '' }}">
+                                    <i class="fa-solid fa-plate-wheat"></i>
                                     Piatti
                                 </a>
                             </li>

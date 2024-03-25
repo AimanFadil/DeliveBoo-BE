@@ -18,6 +18,7 @@
                             <th>Ingredienti</th>
                             <th>Descrizione</th>
                             <th>prezzo</th>
+                            <th>Disponibile</th>
                             <th>Tools</th>
                         </tr>
                     </thead>
@@ -29,6 +30,13 @@
                                 <td>{{ $dish->description }}</td>
                                 <td>{{ $dish->price }}</td>
                                 <td>
+                                    @if ($dish->visible == 0)
+                                    <span class="badge bg-danger">Non Disponibile</span>
+                                    @else
+                                        <span class="badge bg-success">Disponibile</span>
+                                    @endif
+                                </td>
+                                <td>
                                     <a href="{{ route('admin.dish.edit', ['dish' => $dish->id]) }}"
                                         class="btn btn-sm btn-warning me-1"><i
                                             class="fa-solid fa-pen-to-square"></i></a>
@@ -39,7 +47,8 @@
                                         @method('DELETE')
 
                                         <button type="submit" class="btn btn-sm btn-danger"><i
-                                                class="fa-solid fa-trash" onclick="return confirm('Sei sicuro di voler eliminare questo Piatto?')"></i></i></button>
+                                                class="fa-solid fa-trash" onsubmit="return confirm('Sei sicuro di voler eliminare questo Piatto?')"></i></i>
+                                        </button>
                                     </form>
                             </tr>
                         @endforeach

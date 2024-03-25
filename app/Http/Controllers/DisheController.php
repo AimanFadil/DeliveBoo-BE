@@ -49,8 +49,8 @@ class DisheController extends Controller
         $new_dish->price = $form_data['price'];
         $new_dish->description = $form_data['description'];
         $new_dish->ingredients = $form_data['ingredients'];
+        $new_dish->visible = $form_data['visible'];
         $new_dish->slug = Str::Slug($new_dish->name, '-');
-
         $new_dish->save();
 
         return redirect()->route('admin.dish.index');
@@ -85,20 +85,19 @@ class DisheController extends Controller
      * @param  \App\Models\Dishe  $dishe
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDisheRequest $request, Dishe $dishe)
+    public function update(UpdateDisheRequest $request, Dishe $dish)
     {
-        // TODO: fix update record
-        
+
         $form_data = $request->all();
 
-        $dish = Dishe::find($dishe->id);
+        $dish = Dishe::find($dish->id);
 
 
         $dish->name = $form_data['name'];
         $dish->price = $form_data['price'];
         $dish->description = $form_data['description'];
         $dish->ingredients = $form_data['ingredients'];
-        $dish->slug = Str::Slug($dishe->name, '-');
+        $dish->slug = Str::Slug($dish->name, '-');
 
         $dish->save();
 
@@ -111,12 +110,10 @@ class DisheController extends Controller
      * @param  \App\Models\Dishe  $dishe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dishe $dishe)
+    public function destroy(Dishe $dish)
     {
-        // TODO: fix delete record from database
-        $dishe = Dishe::where('id', $dishe->id)->first();
-        dd($dishe);
-        $dishe->delete();
+        $dish = Dishe::where('id', $dish->id)->first();
+        $dish->delete();
         return redirect()->route('admin.dish.index');
     }
 }
