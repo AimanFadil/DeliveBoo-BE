@@ -27,7 +27,7 @@ class StoreDisheRequest extends FormRequest
             'name' => 'required|max:100',
             'ingredients' => 'nullable|max:600',
             'description' => 'nullable|max:800',
-            'price' => 'required',
+            'price' => 'required|numeric',
         ];
     }
     public function messages()
@@ -38,6 +38,7 @@ class StoreDisheRequest extends FormRequest
             'ingredients.max' => 'La lunghezza massima consentita degli ingredienti è di 600 caratteri',
             'description.max' => 'La lunghezza massima consentita della descrizione è di 800 caratteri',
             'price.required' => 'Inserire il prezzo',
+            'price.numeric' => 'il prezzo deve essere inserito in formato numerico'
         ];
     }
 }
