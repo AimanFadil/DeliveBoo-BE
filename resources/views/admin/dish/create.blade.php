@@ -24,7 +24,10 @@
                         @csrf
 
 
-                        <label for="name" class="form-label fw-semibold ">Nome Piatto</label>
+                        <label for="name" class="form-label fw-semibold ">
+                            Nome Piatto
+                            <span class="text-danger fw-bold">*</span>
+                        </label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                             name="name" value="{{ old('name') }}" required>
 
@@ -60,7 +63,10 @@
 
                         <hr>
 
-                        <label for="price" class="form-label fw-semibold">Prezzo</label>
+                        <label for="price" class="form-label fw-semibold">
+                            Prezzo
+                            <span class="text-danger fw-bold">*</span>
+                        </label>
                         <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
                             name="price" value="{{ old('price') }}" required>
 

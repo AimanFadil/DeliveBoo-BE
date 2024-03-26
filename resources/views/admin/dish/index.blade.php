@@ -31,12 +31,11 @@
                             @foreach ($dishes as $dish)
                                 <tr>
                                     <td>
-                                        <div class="h-100 w-100 hover-show-dishe">
+                                        <div class="h-100 w-100 ">
 
                                             <a href="{{ route('admin.dish.show', ['dish' => $dish->id]) }}"
-                                                class="text-decoration-none hover-show-dishe">
+                                                class=" hover-show-dishe">
                                                 {{ $dish->name }}</a>
-                                            <i class="fa-solid fa-arrow-pointer mx-2"></i>
                                         </div>
                                     </td>
                                     <td>{{ substr($dish->ingredients, 0, 20) }}...</td>

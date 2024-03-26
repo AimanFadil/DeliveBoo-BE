@@ -6,11 +6,13 @@
             <div class="col-md-8">
 
 
-                <h2 class="text-success text-center display-4">Benvenuto {{ $user->name }}</h2>
-                <h3 class="text-center text-muted font-italic py-4">Ora che sei loggato procedi alla creazione del tuo
+                <h2 class="text-success text-center display-4 fw-bold">Benvenuto {{ $user->name }}</h2>
+                <h3 class="text-center text-muted font-italic py-4 fw-semibold">Ora che sei loggato procedi alla creazione
+                    del
+                    tuo
                     ristorante
                 </h3>
-                <div class="card border-success-subtle border-2 ">
+                <div class="card border-success-subtle border-2 mb-4">
 
                     <div class="card-header background-green text-white">{{ __('Crea nuovo Ristorante') }}</div>
 
@@ -21,7 +23,8 @@
 
                             <div class="mb-4 row">
                                 <label for="business_name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome ristorante') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome ristorante') }} <span
+                                        class="text-danger fw-bold">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="business_name" type="text"
@@ -38,8 +41,8 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}</label>
+                                <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}
+                                    <span class="text-danger fw-bold">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="address"
@@ -55,8 +58,8 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="vat_number"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('P.iva') }}</label>
+                                <label for="vat_number" class="col-md-4 col-form-label text-md-right">{{ __('P.iva') }}
+                                    <span class="text-danger fw-bold">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="vat_number" type="vat_number"
@@ -87,14 +90,21 @@
                                     @enderror
                                 </div>
                             </div>
-                            @foreach ($typologies as $typology)
-                                <div class="form-check-inline">
-                                    <input type="checkbox" name="typology[]" id="typology-{{ $typology->id }}"
-                                        class="form-check-input" value="{{ $typology->id }}" @checked(is_array(old('typology')) && in_array($typology->id, old('typology')))>
-                                    <label for="" class="form-check-label">{{ $typology->name }}</label>
-                                </div>
-                            @endforeach
-
+                            <label for="typology" class="col-md-4 col-form-label text-md-right">Tipologia <span
+                                    class="text-danger fw-bold">*</span></label>
+                            <div class="mb-3">
+                                @foreach ($typologies as $typology)
+                                    <div class="form-check-inline ">
+                                        <div class="d-flex ">
+                                            <input type="checkbox" name="typology[]" id="typology-{{ $typology->id }}"
+                                                class=" input-checkbox m-0" value="{{ $typology->id }}"
+                                                @checked(is_array(old('typology')) && in_array($typology->id, old('typology')))>
+                                            <label for=""
+                                                class="form-check-label fw-semibold align-self-center ms-1">{{ $typology->name }}</label>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
 
@@ -102,7 +112,6 @@
 
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Crea nuovo Ristorante') }}
-
                                     </button>
                                 </div>
                             </div>
