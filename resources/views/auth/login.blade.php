@@ -12,8 +12,8 @@
                             @csrf
 
                             <div class="mb-4 row">
-                                <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">E-mail <span
+                                        class="text-danger fw-bold">*</span> </label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -29,8 +29,8 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}
+                                    <span class="text-danger fw-bold">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -47,13 +47,16 @@
 
                             <div class="mb-4 row">
                                 <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                            {{ old('remember') ? 'checked' : '' }}>
+                                    <div class="form-check-inline ">
+                                        <div class="d-flex">
+                                            <input class="input-checkbox m-0" type="checkbox" name="remember" id="remember"
+                                                {{ old('remember') ? 'checked' : '' }}>
 
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
-                                        </label>
+                                            <label class="form-check-label  fw-semibold align-self-center ms-1"
+                                                for="remember">
+                                                {{ __('Ricordami') }}
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +69,7 @@
 
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link link-success" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                            {{ __('Recupera Password') }}
                                         </a>
                                     @endif
                                 </div>
