@@ -25,7 +25,11 @@
 
         <div class="row">
             <div class="col-12">
-                <div class="d-flex justify-content-center flex-column align-items-center gap-3 mt-5">
+                <div class="d-flex justify-content-center flex-column align-items-center gap-1 mt-5">
+                    <div class="logo">
+                        <img src="{{ asset('/storage/' . $restaurant->logo) }}" alt="{{ $restaurant->business_name }}"
+                            class="roundede ">
+                    </div>
                     <h2> {{ $restaurant->business_name }} </h2>
                     <h5>{{ $restaurant->address }}</h5>
                     <h6>{{ $restaurant->vat_number }}</h6>
@@ -34,10 +38,6 @@
                         @foreach ($typologies as $typology)
                             <div class="me-3 d-inline fst-italic">{{ $typology->name }}</div>
                         @endforeach
-                    </div>
-                    <div class="img-fluid">
-                        <img src="{{ asset('/storage/' . $restaurant->logo) }}" alt="{{ $restaurant->business_name }}"
-                            class="img-thumbnail">
                     </div>
                 </div>
             </div>
