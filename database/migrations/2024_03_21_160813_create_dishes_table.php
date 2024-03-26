@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->decimal('price');
             $table->boolean('visible')->default(true);
+            $table->boolean('is_delete')->default(false);
             $table->string('image')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();

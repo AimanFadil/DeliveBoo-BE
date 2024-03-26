@@ -8,10 +8,13 @@
 
 
                     <h2 class="text-success text-center display-4">Benvenuto {{ $user->name }}</h2>
-                    <h3 class="text-center text-muted font-italic py-4">Ora che sei loggato procedi alla creazione del tuo
+                    <h3 class="text-center text-muted font-italic py-4">Ora che sei loggato procedi alla creazione del
+                        tuo
                         ristorante
                     </h3>
+
                     <div class="card border-success-subtle border-2 ">
+
 
                         <div class="card-header background-green text-white">{{ __('Crea nuovo Ristorante') }}</div>
 
@@ -59,10 +62,12 @@
                                     <label for="vat_number"
                                         class="col-md-4 col-form-label text-md-right">{{ __('P.iva') }}</label>
 
+
                                     <div class="col-md-6">
-                                        <input id="vat_number" type="vat_number"
+                                        <input id="vat_number" type="vat_number" min="11" max="11"
                                             class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
                                             required autocomplete="new-vat_number">
+
 
                                         @error('vat_number')
                                             <span class="invalid-feedback" role="alert">
@@ -76,10 +81,12 @@
                                     <label for="logo"
                                         class="col-md-4 col-form-label text-md-right">{{ __('Logo') }}</label>
 
+
                                     <div class="col-md-6">
                                         <input id="logo" type="file"
-                                            class="form-control @error('logo') is-invalid @enderror" name="logo" required
+                                            class="form-control @error('logo') is-invalid @enderror" name="logo"
                                             autocomplete="new-logo">
+
 
                                         @error('logo')
                                             <span class="invalid-feedback" role="alert">
@@ -96,6 +103,13 @@
                                         <label for="" class="form-check-label">{{ $typology->name }}</label>
                                     </div>
                                 @endforeach
+                                @error('typology')
+                                    <div class="d-flex justify-content-center ">
+
+                                        <strong class="text-danger ">{{ $message }}!!!</strong>
+
+                                    </div>
+                                @enderror
 
                                 <div class="mb-4 row mb-0">
                                     <div class="col-md-6 offset-md-4">
@@ -114,12 +128,13 @@
                 </div>
             </div>
         </div>
+        </div>
     @else
         <div class="container">
             <div class="row">
                 <div class="col-12">
+                    <h2 class="text-danger text-center display-4">Il tuo ristorante è già stato inserito</h2>
 
-                    <h2 class="text-center mt-5">Il tuo ristorante è già stato inserito</h2>
                 </div>
             </div>
         </div>

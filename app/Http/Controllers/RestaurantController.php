@@ -48,6 +48,7 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
+        
         $user =  Restaurant::where('user_id', '=', Auth::id())->first();
         if($user == null ){
             if($request->hasFile('logo')){
@@ -55,22 +56,27 @@ class RestaurantController extends Controller
                 $request->logo = $path;
                 
             }
-            $restaurant = Restaurant::create([
 
-                'business_name' => $request->business_name,
-                'address' => $request->address,
-                'vat_number' => $request->vat_number,
-                'slug' => str_replace(' ', '-', $request->business_name),
-                'logo' => $request->logo,
-                'user_id' => Auth::id(),
-                
-            ]);
             
-
             if($request->typology != null){
+                $restaurant = Restaurant::create([
+    
+                    'business_name' => $request->business_name,
+                    'address' => $request->address,
+                    'vat_number' => $request->vat_number,
+                    'slug' => str_replace(' ', '-', $request->business_name),
+                    'logo' => $request->logo,
+                    'user_id' => Auth::id(),
+                    
+                ]);
+
                 $restaurant->typologies()->sync($request->typology);
+                return view('restaurants.index');
             }
-            return view('restaurants.index');
+            else{
+                
+                return redirect()->route('restaurants.create');
+            }
         }
         else{
             return view('dashboard');

@@ -24,7 +24,7 @@ class DisheController extends Controller
     public function index()
     {
         $restaurant = Restaurant::where('user_id', '=',Auth::user()->id)->first();
-        $dishes = Dishe::where('restaurant_id', $restaurant->id)->orderBy('name', 'asc')->get();
+        $dishes = Dishe::where('restaurant_id', $restaurant->id)->where('is_delete', 0)->orderBy('name', 'asc')->get();
 
         return view('admin.dish.index', compact('dishes'));
     }
@@ -137,7 +137,8 @@ class DisheController extends Controller
         if($dish->image != null){
             Storage::disk('public')->delete($dish->image);
         }
-        $dish->delete();
+        $dish->is_delete = true;
+        $dish->save();
         return redirect()->route('admin.dish.index');
     }
 }

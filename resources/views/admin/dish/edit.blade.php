@@ -89,7 +89,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2>Piatto non disponibile</h2>
+                    <h2 class="text-danger text-center display-4">Il piatto che stai cercando non esiste</h2>
+
                 </div>
             </div>
         </div>
