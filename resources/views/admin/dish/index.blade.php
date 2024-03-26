@@ -32,9 +32,11 @@
                                 <tr>
                                     <td>
                                         <div class="h-100 w-100 hover-show-dishe">
+
                                             <a href="{{ route('admin.dish.show', ['dish' => $dish->id]) }}"
-                                                class="text-decoration-none text-black">
+                                                class="text-decoration-none hover-show-dishe">
                                                 {{ $dish->name }}</a>
+                                            <i class="fa-solid fa-arrow-pointer mx-2"></i>
                                         </div>
                                     </td>
                                     <td>{{ $dish->ingredients }}</td>
@@ -48,22 +50,38 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('admin.dish.edit', ['dish' => $dish->id]) }}"
-                                            class="btn btn-sm btn-warning me-1 mt-1"><i
-                                                class="fa-solid fa-pen-to-square "></i></a>
+                                        <div class="d-flex w-100">
 
-                                        <form action="{{ route('admin.dish.destroy', ['dish' => $dish->id]) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('DELETE')
 
-                                            <button type="button" class="btn_delete btn btn-sm btn-danger"
-                                                data-bs-toggle="modal" data-bs-target="#modal_delete"
-                                                data-dishid="{{ $dish->id }}" data-dishname="{{ $dish->name }}"
-                                                data-type="dish">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
-                                        </form>
+                                            <span>
+                                                <div class="tooltip_">
+                                                    <a href="{{ route('admin.dish.edit', ['dish' => $dish->id]) }}"
+                                                        class="btn btn-sm btn-warning me-2 mt-1">
+                                                        <i class="fa-solid fa-pen-to-square "></i>
+                                                        <span
+                                                            class="tooltiptext_ colorgreen fw-bold border border-success">Modifica</span>
+                                                    </a>
+                                                </div>
+                                            </span>
+                                            <span class="w-50">
+                                                <div class="tooltip_">
+                                                    <form action="{{ route('admin.dish.destroy', ['dish' => $dish->id]) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+
+                                                        <button type="button" class="btn_delete btn btn-sm btn-danger mt-1"
+                                                            data-bs-toggle="modal" data-bs-target="#modal_delete"
+                                                            data-dishid="{{ $dish->id }}"
+                                                            data-dishname="{{ $dish->name }}" data-type="dish">
+                                                            <i class="fa-solid fa-trash "></i>
+                                                        </button>
+                                                        <span
+                                                            class="tooltiptext_ colorgreen fw-bold border border-success">Elimina</span>
+                                                    </form>
+                                                </div>
+                                            </span>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

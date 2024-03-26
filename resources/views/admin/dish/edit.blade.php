@@ -69,8 +69,8 @@
 
                     <label for="visible" class="form-label">Disponibile</label>
                     <select id="visible" name="visible" class="form-select" value="{{ $dish->visible }}">
-                        <option value="1">1</option>
-                        <option value="0">0</option>
+                        <option value="1">si</option>
+                        <option value="0">no</option>
                     </select>
 
                     <div class="col-12 d-flex justify-content-end">

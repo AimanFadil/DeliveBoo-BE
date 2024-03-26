@@ -50,7 +50,7 @@
 
                         <label for="description" class="form-label fw-semibold">Descrizione</label>
                         <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-                            rows="3" required>{{ old('description') }}</textarea>
+                            rows="3">{{ old('description') }}</textarea>
 
                         @error('description')
                             <span class="invalid-feedback" role="alert">
@@ -85,8 +85,8 @@
                             <div>
                                 <label for="visible" class="form-label fw-semibold">Disponibile</label>
                                 <select id="visible" name="visible">
-                                    <option value="1">1</option>
-                                    <option value="0">0</option>
+                                    <option value="1">si</option>
+                                    <option value="0">no</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-sm hover-3 my-3 text-white p-2">Aggiungi</button>
