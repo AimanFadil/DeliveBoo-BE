@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Restaurant;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -12,7 +13,12 @@ class DashBoardController extends Controller
     public function index()
     {
         $restaurant =  Restaurant::where('user_id', '=', Auth::id())->first();
-        $typologies = $restaurant->typologies()->get();
+        $typologies = [];
+        if ($restaurant != null ) {
+
+            $typologies = $restaurant->typologies()->get();
+            
+        }
         return view('dashboard', compact('restaurant', 'typologies'));
     }
 }

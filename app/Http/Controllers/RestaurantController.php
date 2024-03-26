@@ -62,13 +62,12 @@ class RestaurantController extends Controller
                 'vat_number' => $request->vat_number,
                 'slug' => str_replace(' ', '-', $request->business_name),
                 'logo' => $request->logo,
-                'logo' => $request->logo,
                 'user_id' => Auth::id(),
                 
-                
-                
             ]);
-            if(count($request->typology) > 0){
+            
+
+            if($request->typology != null){
                 $restaurant->typologies()->sync($request->typology);
             }
             return view('restaurants.index');
