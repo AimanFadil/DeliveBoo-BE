@@ -50,7 +50,7 @@ body {
 }
 
 .bg-forms {
-    background-color: rgba(21, 131, 100, 0.08)
+    background-color: rgba(65, 150, 65, 0.256)
 }
 
 .bg-orange {
@@ -59,6 +59,10 @@ body {
 
 .backgroundpages-red {
     background-color: red;
+}
+
+.background-green-footer {
+    background-color: rgb(69, 169, 140);
 }
 
 .background-green {
@@ -101,7 +105,7 @@ body {
 }
 
 .hover-show-dishe {
-    color: #0000;
+    color: rgb(21, 131, 100);
     cursor: pointer;
     background:
         linear-gradient(90deg, rgb(21, 131, 100) 50%, #000 0) var(--_p, 100%)/200% no-repeat;
@@ -112,7 +116,7 @@ body {
 
 .hover-show-dishe:hover {
     --_p: 0%;
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 
@@ -170,6 +174,42 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.tooltip_ {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+
+
+}
+
+.tooltip_ .tooltiptext_ {
+    visibility: hidden;
+    width: 70px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px 0;
+    font-size: smaller;
+
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -35px;
+}
+
+.tooltip_:hover .tooltiptext_ {
+    visibility: visible;
+}
+
+/* show dish */
+.image-dish {
+    width: 400px
+}
+
 
 
 // The icon specifics
