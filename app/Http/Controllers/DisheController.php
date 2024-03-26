@@ -134,6 +134,9 @@ class DisheController extends Controller
     public function destroy(Dishe $dish)
     {
         $dish = Dishe::where('id', $dish->id)->first();
+        if($dish->image != null){
+            Storage::disk('public')->delete($dish->image);
+        }
         $dish->delete();
         return redirect()->route('admin.dish.index');
     }

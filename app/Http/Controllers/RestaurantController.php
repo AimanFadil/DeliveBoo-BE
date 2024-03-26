@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -49,15 +50,21 @@ class RestaurantController extends Controller
     {
         $user =  Restaurant::where('user_id', '=', Auth::id())->first();
         if($user == null ){
+            if($request->hasFile('logo')){
+                $path = Storage::disk('public')->put('images', $request->logo);
+                $request->logo = $path;
+                
+            }
             $restaurant = Restaurant::create([
+
                 'business_name' => $request->business_name,
                 'address' => $request->address,
                 'vat_number' => $request->vat_number,
                 'slug' => str_replace(' ', '-', $request->business_name),
-                
+                'logo' => $request->logo,
                 'logo' => $request->logo,
                 'user_id' => Auth::id(),
-
+                
                 
                 
             ]);

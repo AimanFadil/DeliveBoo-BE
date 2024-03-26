@@ -37,8 +37,8 @@
                                                 {{ $dish->name }}</a>
                                         </div>
                                     </td>
-                                    <td>{{ $dish->ingredients }}</td>
-                                    <td>{{ $dish->description }}</td>
+                                    <td>{{ substr($dish->ingredients, 0, 20) }}...</td>
+                                    <td>{{ substr($dish->description, 0, 20) }}...</td>
                                     <td>€{{ $dish->price }}</td>
                                     <td>
                                         @if ($dish->visible == 0)
