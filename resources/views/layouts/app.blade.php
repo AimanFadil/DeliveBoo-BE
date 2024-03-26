@@ -54,14 +54,14 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav me-auto ">
-                        @if (Auth::check())
+                        @if (Auth::check() && Auth::user()->restaurant()->exists())
                             <li class="nav-item">
-                                <a class="nav-link colorgreen red-hover fw-bolder {{ Route::currentRouteName() == 'dashboard' ?: '' }}"
+                                <a class="nav-link hover-navitem fw-bolder {{ Route::currentRouteName() == 'dashboard' ?: '' }}"
                                     href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
 
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link colorgreen red-hover fw-bolder {{ Route::currentRouteName() == 'dashboard' ?: '' }}"
+                                <a class="nav-link hover-navitem fw-bolder {{ Route::currentRouteName() == 'dashboard' ?: '' }}"
                                     href="{{ route('admin.dish.index') }}">{{ __('Piatti') }}</a>
 
                             </li>
@@ -84,13 +84,6 @@
                                 </li>
                             @endif
                         @else
-                            @if (!Auth::user()->restaurant()->exists('user_id'))
-                                <li class="nav-item">
-                                    <a class="btn btn-sm btn-primary mt-1 me-3"
-                                        href="{{ url('restaurants/create') }}">{{ __('Create your Restaurant') }}
-                                    </a>
-                                </li>
-                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle hover-navitem fw-bolder"
                                     href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
