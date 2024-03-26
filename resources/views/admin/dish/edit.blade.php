@@ -18,7 +18,7 @@
 
                     <label for="name" class="form-label fw-semibold">Nome Piatto</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                        name="name" value="{{ $dish->name }}">
+                        name="name" value="{{ old('name') }}">
 
                     @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
 
                     <label for="ingredients" class="form-label fw-semibold">Ingredienti</label>
                     <input type="text" class="form-control @error('ingredients') is-invalid @enderror" id="ingredients"
-                        name="ingredients" value="{{ $dish->ingredients }}">
+                        name="ingredients" value="{{ old('ingredients') }}">
 
                     @error('ingredients')
                         <span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
 
                     <label for="description" class="form-label fw-semibold">Descrizione</label>
                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-                        rows="3">{{ $dish->description }}</textarea>
+                        rows="3">{{ old('description')}}</textarea>
 
 
                     @error('description')
@@ -55,7 +55,7 @@
 
                     <label for="price" class="form-label fw-semibold">Prezzo</label>
                     <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
-                        name="price" value="{{ $dish->price }}">
+                        name="price" value="{{ old('price') }}">
 
 
                     @error('price')
