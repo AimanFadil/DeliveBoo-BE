@@ -24,11 +24,11 @@ class StoreRestaurantRequest extends FormRequest
     public function rules()
     {
         return [
+            
             'business_name' => 'required|max:150',
             'address' => 'required',
-            'vat_number' => 'required|max:11',
-            'logo' => 'required',
-            
+            'vat_number' => 'required|max:11|min:11',
+            'typology' => 'required',
           
         ];
     }
@@ -41,9 +41,10 @@ class StoreRestaurantRequest extends FormRequest
             'address.required' => "L 'indirizzo è obbligatorio",
             'vat_number.required' => 'La partita IVA è obbligatoria',
             'vat_number.max' => 'La partita IVA deve essere lunga 11 caratteri',
-            'logo.required' => 'Il logo è obbligatorio',
+            'vat_number.min' => 'La partita IVA deve essere lunga 11 caratteri',
+            'typology.required' => 'Non hai inserito la tipologia',
             
-
+            
 
 
         ];

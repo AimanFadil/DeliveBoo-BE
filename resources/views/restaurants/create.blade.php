@@ -9,6 +9,7 @@
                 <h2 class="text-success text-center display-4">Benvenuto {{ $user->name }}</h2>
                 <h3 class="text-center text-muted font-italic py-4">Ora che sei loggato procedi alla creazione del tuo
                     ristorante
+
                 </h3>
                 <div class="card border-success-subtle border-2 ">
 
@@ -59,7 +60,7 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('P.iva') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="vat_number" type="vat_number"
+                                    <input id="vat_number" type="vat_number" min="11" max="11"
                                         class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
                                         required autocomplete="new-vat_number">
 
@@ -77,7 +78,7 @@
 
                                 <div class="col-md-6">
                                     <input id="logo" type="file"
-                                        class="form-control @error('logo') is-invalid @enderror" name="logo" required
+                                        class="form-control @error('logo') is-invalid @enderror" name="logo"
                                         autocomplete="new-logo">
 
                                     @error('logo')
@@ -94,6 +95,16 @@
                                     <label for="" class="form-check-label">{{ $typology->name }}</label>
                                 </div>
                             @endforeach
+                            @error('typology')
+                                <div class="d-flex justify-content-center ">
+
+                                    <strong class="text-danger ">{{ $message }}!!!</strong>
+
+                                </div>
+                            @enderror
+
+
+
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">

@@ -7,8 +7,13 @@
                 @if (Auth::user()->restaurant()->exists('user_id'))
                     <div class="d-flex justify-content-center flex-column align-items-center gap-1 mt-5">
                         <div class="logo">
-                            <img src="{{ asset('/storage/' . $restaurant->logo) }}" alt="{{ $restaurant->business_name }}"
-                                class="roundede ">
+                            @if ($restaurant->logo != null)
+                                <img src="{{ asset('/storage/' . $restaurant->logo) }}" alt="{{ $restaurant->business_name }}"
+                                    class="roundede ">
+                            @else
+                                <img src="{{ asset('/storage/images/default-restaurant-logo.png') }}"
+                                    alt="{{ $restaurant->business_name }}" class="roundede ">
+                            @endif
                         </div>
                         <h2> {{ $restaurant->business_name }} </h2>
                         <h5>Indirizzo: {{ $restaurant->address }}</h5>
