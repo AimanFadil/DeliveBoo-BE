@@ -61,7 +61,7 @@
                                 <div class="col-md-6">
                                     <input id="vat_number" type="vat_number"
                                         class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
-                                        required autocomplete="new-vat_number">
+                                        required autocomplete="new-vat_number" value="{{ old('vat_number') }}">
 
                                     @error('vat_number')
                                         <span class="invalid-feedback" role="alert">

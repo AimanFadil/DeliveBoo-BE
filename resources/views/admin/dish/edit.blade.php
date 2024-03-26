@@ -15,66 +15,46 @@
                     @csrf
                     @method('PUT')
 
-
                     <label for="name" class="form-label fw-semibold">Nome Piatto</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                        name="name" value="{{ old('name') }}">
-
-                    @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                        name="name" value="{{ old('name', $dish->name) }}">
+                    <div id="nameError" class="text-danger"></div>
 
                     <hr>
 
                     <label for="ingredients" class="form-label fw-semibold">Ingredienti</label>
                     <input type="text" class="form-control @error('ingredients') is-invalid @enderror" id="ingredients"
-                        name="ingredients" value="{{ old('ingredients') }}">
+                        name="ingredients" value="{{ old('ingredients', $dish->ingredients) }}">
+                    <div id="ingredientsError" class="text-danger"></div>
 
-                    @error('ingredients')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
 
                     <hr>
 
                     <label for="description" class="form-label fw-semibold">Descrizione</label>
                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
-                        rows="3">{{ old('description')}}</textarea>
-
-
-                    @error('description')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                        rows="3">{{ $dish->description }}</textarea>
+                    <div id="descriptionError" class="text-danger"></div>
 
                     <hr>
 
                     <label for="price" class="form-label fw-semibold">Prezzo</label>
                     <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
-                        name="price" value="{{ old('price') }}">
+                        name="price" value="{{ old('price', $dish->price) }}">
+                    <div id="priceError" class="text-danger"></div>
 
-
-                    @error('price')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
 
                     <label for="image" class="form-label">Immagine</label>
                     <input type="file" class="form-control" id="image" name="image">
 
                     <label for="visible" class="form-label">Disponibile</label>
-                    <select id="visible" name="visible" class="form-select" value="{{ $dish->visible }}">
+                    <select id="visible" name="visible" class="form-select" value="{{ old('visible', $dish->visible) }}">
                         <option value="1">si</option>
                         <option value="0">no</option>
                     </select>
 
                     <div class="col-12 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-sm btn-success fw-semibold m-4 p-2 hover-3">Modifica</button>
+                        <button type="submit" id="submit-button"
+                            class="btn btn-sm btn-success fw-semibold m-4 p-2 hover-3">Modifica</button>
                     </div>
 
 

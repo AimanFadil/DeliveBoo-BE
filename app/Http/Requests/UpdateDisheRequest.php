@@ -27,7 +27,7 @@ class UpdateDisheRequest extends FormRequest
             'name' => 'required|max:100',
             'ingredients' => 'nullable|max:600',
             'description' => 'nullable|max:800',
-            'price' => 'required|numeric',
+            'price' => 'required|regex:/^[0-9]{1,10}(\.[0-9]{2})?$/',
         ];
     }
     public function messages()

@@ -47,6 +47,7 @@ class DisheController extends Controller
      */
     public function store(StoreDisheRequest $request)
     {
+
         $form_data = $request->all();
         $restaurant = Restaurant::where('user_id', '=',Auth::user()->id)->first();
 
@@ -58,7 +59,7 @@ class DisheController extends Controller
             $new_dish->image = $form_data['image'];
         }
        /*  $dish = Dishe::create($request->validated()); */
-        
+
         $new_dish->name = $form_data['name'];
         $new_dish->price = $form_data['price'];
         $new_dish->description = $form_data['description'];
@@ -70,6 +71,7 @@ class DisheController extends Controller
 
         return redirect()->route('admin.dish.index');
     }
+
 
     /**
      * Display the specified resource.

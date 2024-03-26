@@ -7,44 +7,23 @@
                 <h1 class="fs-4  mt-4  colorgreen fw-bold">
                     Aggiungi un nuovo Piatto
                 </h1>
-                @if ($errors->any())
-                    <div class="alert alert-danger" role="alert">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <div class="col-12">
 
                     <form action="{{ route('admin.dish.store') }}" method="POST"
                         class="form-control my-4 border-success-subtle border-2 bg-forms colorgreen container-shadow"
                         enctype="multipart/form-data">
                         @csrf
-
-
                         <label for="name" class="form-label fw-semibold ">Nome Piatto</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                            name="name" value="{{ old('name') }}" required>
-
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-
+                            name="name" value="{{ old('name') }}">
+                        <div id="nameError" class="text-danger"></div>
                         <hr>
 
                         <label for="ingredients" class="form-label fw-semibold">Ingredienti</label>
                         <input type="text" class="form-control @error('ingredients') is-invalid @enderror"
                             id="ingredients" name="ingredients" value="{{ old('ingredients') }}">
 
-                        @error('ingredients')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <div id="ingredientsError" class="text-danger"></div>
 
                         <hr>
 
@@ -52,32 +31,20 @@
                         <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
                             rows="3">{{ old('description') }}</textarea>
 
-                        @error('description')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <div id="descriptionError" class="text-danger"></div>
 
                         <hr>
 
                         <label for="price" class="form-label fw-semibold">Prezzo</label>
                         <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
-                            name="price" value="{{ old('price') }}" required>
+                            step=".01" name="price" value="{{ old('price') }}">
 
-                        @error('price')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <div id="priceError" class="text-danger"></div>
 
                         <hr>
 
-
-
-
                         <label for="image" class="form-label fw-semibold">Immagine</label>
                         <input type="file" class="form-control" id="image" name="image">
-
 
                         <hr>
 
@@ -89,7 +56,8 @@
                                     <option value="0">no</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-sm hover-3 my-3 text-white p-2">Aggiungi</button>
+                            <button id="submit-button" type="submit"
+                                class="btn btn-sm hover-3 my-3 text-white p-2">Aggiungi</button>
                         </div>
 
                     </form>
