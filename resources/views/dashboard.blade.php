@@ -31,8 +31,8 @@
                             class="roundede ">
                     </div>
                     <h2> {{ $restaurant->business_name }} </h2>
-                    <h5>{{ $restaurant->address }}</h5>
-                    <h6>{{ $restaurant->vat_number }}</h6>
+                    <h5>Indirizzo: {{ $restaurant->address }}</h5>
+                    <h6>P.Iva: {{ $restaurant->vat_number }}</h6>
                     <div>Tipologie:</div>
                     <div>
                         @foreach ($typologies as $typology)
