@@ -30,10 +30,10 @@
             {{-- about us section --}}
             <div class="row d-flex flex-wrap  rounded-4 mb-5">
                 <div class="col-12 mb-4">
-                    <h1 class="fw-bolder colorgreen text-center  text-shadow">Chi Siamo</h1>
+                    <h1 class="fw-bolder colorgreen_lite text-center  text-shadow">Chi Siamo</h1>
                 </div>
                 <div
-                    class="col-6 d-flex align-items-center  fs-5 fw-semibold text-center background-green text-white rounded-5 p-4 container-shadow">
+                    class="col-6 d-flex align-items-center  fs-5 fw-semibold text-center background-green-footer text-white rounded-5 p-4 container-shadow">
                     Deliveboo è nato con l'obiettivo di fornire agli operatori nel settore del food
                     delivery uno strumento potente e intuitivo per gestire e far crescere le loro attività.
                     Con anni di esperienza nel settore e una passione per l'innovazione, ci impegniamo a fornire
@@ -67,10 +67,10 @@
             {{-- How It Works section: --}}
             <div class="row d-flex flex-wrap mt-5 mb-5">
                 <div class="col-12 mb-4">
-                    <h1 class="fw-bolder colorgreen text-center text-shadow">Come Funziona</h1>
+                    <h1 class="fw-bolder colorgreen_lite text-center text-shadow">Come Funziona</h1>
                 </div>
                 <div
-                    class="col-6 d-flex align-items-center fs-5 fw-semibold text-center  background-green rounded-5 text-white p-4 container-shadow">
+                    class="col-6 d-flex align-items-center fs-5 fw-semibold text-center  background-green-footer rounded-5 text-white p-4 container-shadow">
                     Con Deliveboo, gestire il vostro delivery non è mai stato così facile. La nostra interfaccia utente
                     intuitiva vi permette di monitorare gli ordini in tempo reale, gestire il menu con facilità e
                     coordinarele

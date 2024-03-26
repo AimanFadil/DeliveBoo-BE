@@ -100,7 +100,7 @@
 
 
 
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-sm text-white hover-3 mt-4 ">
                                         {{ __('Crea nuovo Ristorante') }}
 
                                     </button>

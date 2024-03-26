@@ -33,15 +33,15 @@ class StoreRestaurantRequest extends FormRequest
         ];
     }
 
-    public function meassages()
+    public function messages()
     {
         return [
-            'business_name.required' => 'Il business_name del progetto è obbligatorio',
-            'business_name.max' => 'Il business_name del progetto può essere lungo massimo 150 caratteri',
-            'address.required' => 'Questo tipo non esiste',
-            'vat_number.required' => 'Il vat_number del progetto è obbligatorio',
-            'vat_number.max' => 'Il vat_number del progetto può essere lungo massimo 11 caratteri',
-            'logo.required' => 'La logo del progetto è obbligatoria',
+            'business_name.required' => 'Il nome del ristorante è obbligatorio',
+            'business_name.max' => 'Il nome del ristorante può essere lungo massimo 150 caratteri',
+            'address.required' => "L 'indirizzo è obbligatorio",
+            'vat_number.required' => 'La partita IVA è obbligatoria',
+            'vat_number.max' => 'La partita IVA deve essere lunga 11 caratteri',
+            'logo.required' => 'Il logo è obbligatorio',
             
 
 

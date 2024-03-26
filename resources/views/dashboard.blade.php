@@ -21,9 +21,19 @@
                         </div>
                     </div>
                 @else
-                    <a class="btn btn-sm btn-success mt-1 me-3"
-                        href="{{ url('restaurants/create') }}">{{ __('Create your Restaurant') }}
-                    </a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 ">
+                                <h2 class="text-success text-center display-4">Crea il tuo ristorante</h2>
+                                <div class="col-12 justify-content-center d-flex">
+
+                                    <a class="btn btn-sm text-white hover-3 mt-4 "
+                                        href="{{ url('restaurants/create') }}">{{ __('Create your Restaurant') }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @endif
             </div>
         </div>
