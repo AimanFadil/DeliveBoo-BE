@@ -33,7 +33,7 @@
                                 <div class="col-12 justify-content-center d-flex">
 
                                     <a class="btn btn-sm text-white hover-3 mt-4 "
-                                        href="{{ url('restaurants/create') }}">{{ __('Create your Restaurant') }}
+                                        href="{{ url('restaurants/create') }}">{{ __('Crea il tuo ristorante') }}
                                     </a>
                                 </div>
                             </div>
