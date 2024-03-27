@@ -15,7 +15,7 @@
                         @csrf
                         <label for="name" class="form-label fw-semibold ">Nome Piatto</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                            name="name" value="{{ old('name') }}">
+                            name="name" value="{{ old('name') }}" required>
                         <div id="nameError" class="text-danger"></div>
                         <hr>
 
