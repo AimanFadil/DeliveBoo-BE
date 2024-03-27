@@ -119,13 +119,14 @@
                                         <div class="form-check-inline ">
                                             <div class="d-flex ">
                                                 <input type="checkbox" name="typology[]" id="typology-{{ $typology->id }}"
-                                                    class=" input-checkbox m-0" value="{{ $typology->id }}"
+                                                    class=" input-checkbox m-0 my_check" value="{{ $typology->id }}"
                                                     @checked(is_array(old('typology')) && in_array($typology->id, old('typology')))>
                                                 <label for=""
                                                     class="form-check-label fw-semibold align-self-center ms-1">{{ $typology->name }}</label>
                                             </div>
                                         </div>
                                     @endforeach
+                                    <div id="check_error" class="d-flex justify-content-center text-danger"></div>
                                     @error('typology')
                                         <div class="d-flex justify-content-center ">
 
@@ -137,9 +138,7 @@
                                 <div class="mb-4 row mb-0">
                                     <div class="col-md-6 offset-md-4">
 
-
-
-                                        <button type="submit" class="btn btn-sm text-white hover-3 mt-4 ">
+                                        <button type="submit" id="btn_rest" class="btn btn-sm text-white hover-3 mt-4 ">
                                             {{ __('Crea nuovo Ristorante') }}
 
                                         </button>

@@ -2,7 +2,6 @@
 const submitButton = document.getElementById('submit-button');
 if (submitButton) {
   submitButton.addEventListener('click', event => {
-    console.log("submit")
 
     const nameField = document.getElementById('name');
     const ingredientsField = document.getElementById('ingredients');
