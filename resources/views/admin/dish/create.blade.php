@@ -7,15 +7,6 @@
                 <h1 class="fs-4  mt-4  colorgreen fw-bold">
                     Aggiungi un nuovo Piatto
                 </h1>
-                @if ($errors->any())
-                    <div class="alert alert-danger" role="alert">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <div class="col-12">
 
                     <form action="{{ route('admin.dish.store') }}" method="POST"
@@ -24,25 +15,27 @@
                         @csrf
 
 
+
                         <label for="name" class="form-label fw-semibold ">
                             Nome Piatto
                             <span class="text-danger fw-bold">*</span>
                         </label>
+
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                             name="name" value="{{ old('name') }}" required>
-
+                        <div id="nameError" class="text-danger"></div>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-
                         <hr>
 
                         <label for="ingredients" class="form-label fw-semibold">Ingredienti</label>
                         <input type="text" class="form-control @error('ingredients') is-invalid @enderror"
                             id="ingredients" name="ingredients" value="{{ old('ingredients') }}">
 
+                        <div id="ingredientsError" class="text-danger"></div>
                         @error('ingredients')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -55,12 +48,12 @@
                         <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
                             rows="3">{{ old('description') }}</textarea>
 
-                        @error('description')
+                        <div id="descriptionError" class="text-danger"></div>
+                        @error('desrciption')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-
                         <hr>
 
                         <label for="price" class="form-label fw-semibold">
@@ -68,22 +61,18 @@
                             <span class="text-danger fw-bold">*</span>
                         </label>
                         <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
-                            name="price" value="{{ old('price') }}" required>
+                            step=".01" name="price" value="{{ old('price') }}">
 
+                        <div id="priceError" class="text-danger"></div>
                         @error('price')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-
                         <hr>
-
-
-
 
                         <label for="image" class="form-label fw-semibold">Immagine</label>
                         <input type="file" class="form-control" id="image" name="image">
-
 
                         <hr>
 
@@ -95,10 +84,13 @@
                                     <option value="0">no</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-sm hover-3 my-3 text-white p-2">Aggiungi</button>
+                            <button id="submit-button" type="submit"
+                                class="btn btn-sm hover-3 my-3 text-white p-2">Aggiungi</button>
                         </div>
 
                     </form>
                 </div>
             </div>
-        @endSection
+        </div>
+    </div>
+@endSection

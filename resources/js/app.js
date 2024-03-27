@@ -1,4 +1,5 @@
 import './bootstrap';
+import './dish_form_validation';
 import '~resources/scss/app.scss';
 import * as bootstrap from 'bootstrap';
 import.meta.glob([
