@@ -81,7 +81,7 @@
 
 
                                     <div class="col-md-6">
-                                        <input id="vat_number" type="vat_number" min="11" max="11"
+                                        <input id="vat_number" type="text" maxlength="11" minlength="11"
                                             class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
                                             value="{{ old('vat_number') }}" required autocomplete="new-vat_number">
 
