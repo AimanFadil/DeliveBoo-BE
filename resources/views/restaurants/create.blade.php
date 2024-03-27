@@ -47,6 +47,7 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
+                                        <div id="BusinessNameError" class="text-danger"></div>
                                     </div>
                                 </div>
 
@@ -68,6 +69,7 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
+                                        <div id="addressError" class="text-danger"></div>
                                     </div>
                                 </div>
 
@@ -91,6 +93,7 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
+                                        <div id="vat_numberError" class="text-danger"></div>
                                     </div>
                                 </div>
 
