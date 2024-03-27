@@ -25,6 +25,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <div id="name_error" class="text-danger"></div>
                                 </div>
                             </div>
 
@@ -42,6 +43,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <div id="email_error" class="text-danger"></div>
                                 </div>
                             </div>
 
@@ -50,9 +52,9 @@
                                         class="text-danger fw-bold">*</span></label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password">
+                                    <input id="password" type="password" class="form-control"
+                                        @error('password') is-invalid @enderror name="password" required
+                                        autocomplete="new-password">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -69,12 +71,14 @@
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
+                                    <div id="pass_error" class="text-danger"></div>
                                 </div>
                             </div>
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-success  background-green">
+                                    <button type="submit" id="register_validation"
+                                        class="btn btn-success  background-green">
                                         {{ __('Registrati') }}
                                     </button>
                                 </div>
