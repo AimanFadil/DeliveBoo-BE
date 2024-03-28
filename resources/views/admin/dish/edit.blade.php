@@ -86,12 +86,9 @@
                                 class="btn btn-sm btn-success fw-semibold m-4 p-2 hover-3">Modifica</button>
                         </div>
 
-
-
-
-
-
-
+                        <div class="col-12">
+                            i campi contrassegnati con " <strong class="text-danger">*</strong> " sono obbligatori
+                        </div>
 
                     </form>
                 </div>

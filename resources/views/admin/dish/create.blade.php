@@ -87,6 +87,9 @@
                             <button id="submit-button" type="submit"
                                 class="btn btn-sm hover-3 my-3 text-white p-2">Aggiungi</button>
                         </div>
+                        <div class="col-12">
+                            i campi contrassegnati con " <strong class="text-danger">*</strong> " sono obbligatori
+                        </div>
 
                     </form>
                 </div>

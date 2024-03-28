@@ -77,6 +77,10 @@
                                     @endif
                                 </div>
                             </div>
+
+                            <div class="col-12">
+                                i campi contrassegnati con " <strong class="text-danger">*</strong> " sono obbligatori
+                            </div>
                         </form>
                     </div>
                 </div>

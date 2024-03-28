@@ -76,12 +76,16 @@
                             </div>
 
                             <div class="mb-4 row mb-0">
-                                <div class="col-md-6 offset-md-4">
+                                <div class="col-md-6 offset-md-4 d-flex justify-content-end">
                                     <button type="submit" id="register_validation"
                                         class="btn btn-success  background-green">
                                         {{ __('Registrati') }}
                                     </button>
                                 </div>
+                            </div>
+
+                            <div class="col-12">
+                                i campi contrassegnati con " <strong class="text-danger">*</strong> " sono obbligatori
                             </div>
                         </form>
                     </div>
