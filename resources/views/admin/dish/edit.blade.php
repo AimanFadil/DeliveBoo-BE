@@ -81,13 +81,15 @@
                         </select>
 
 
-                        <div class="col-12 d-flex justify-content-end">
-                            <button type="submit" id="submit-button"
-                                class="btn btn-sm btn-success fw-semibold m-4 p-2 hover-3">Modifica</button>
-                        </div>
+                        <div class="d-flex ">
+                            <div class="col-11 mt-3 ">
+                                i campi contrassegnati con " <strong class="text-danger">*</strong> " sono obbligatori
+                            </div>
+                            <div class="col-1 justify-content-end">
+                                <button type="submit" id="submit-button"
+                                    class="btn btn-sm btn-success fw-semibold m-4 p-2 hover-3">Modifica</button>
 
-                        <div class="col-12">
-                            i campi contrassegnati con " <strong class="text-danger">*</strong> " sono obbligatori
+                            </div>
                         </div>
 
                     </form>
