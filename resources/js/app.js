@@ -2,6 +2,7 @@ import './bootstrap';
 import './dish_form_validation';
 import './checkbox_validation';
 import './password_validation';
+import './loginValidation';
 import '~resources/scss/app.scss';
 import * as bootstrap from 'bootstrap';
 import.meta.glob([

@@ -25,6 +25,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <div id="email_error" class="text-danger"></div>
                                 </div>
                             </div>
 
@@ -42,6 +43,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <div id="pass_error" class="text-danger"></div>
                                 </div>
                             </div>
 
@@ -63,7 +65,8 @@
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary btn-success  background-green">
+                                    <button type="submit" id="login_validation"
+                                        class="btn btn-primary btn-success  background-green">
                                         {{ __('Login') }}
                                     </button>
 
