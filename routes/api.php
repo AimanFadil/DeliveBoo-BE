@@ -22,7 +22,7 @@ use App\Http\Controllers\Api\DisheController as DisheController;
 */
 
 Route::get('/restaurant', [RestaurantController::class, 'index']);
-Route::get('/dishe', [DisheController::class, 'index']);
+Route::get('/restaurant/menu/{id}', [DisheController::class, 'index']);
 Route::get('/restaurant/{id}', [RestaurantController::class, 'show']);
 Route::get('/typology', [TypologyController::class, 'index']);
 

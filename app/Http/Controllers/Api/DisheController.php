@@ -8,9 +8,9 @@ use App\Models\Dishe;
 
 class DisheController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        $dishes = Dishe::all();
+        $dishes = Dishe::all()->where('restaurant_id',$id);
         
         return response()->json([
             "success" => true,
