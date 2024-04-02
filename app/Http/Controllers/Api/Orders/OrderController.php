@@ -20,9 +20,14 @@ class OrderController extends Controller
     }
 
     public function makePayment(OrderRequest $request,Gateway $gateway){
-
+        $products = $request->products;
+        $amount= null;
+        foreach($products as $product){
+            $prices =intval($product['price'])  * intval( $product['quantity']);
+            $amount += $prices;
+        };
        $result = $gateway->transaction()->sale([
-        'amount' => $request->amount,
+        'amount' => $amount,
         'paymentMethodNonce' => $request->token,
         'options' => [
             'submitForSettlement' => true
