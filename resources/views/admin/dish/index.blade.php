@@ -40,7 +40,7 @@
                                     </td>
                                     <td>{{ substr($dish->ingredients, 0, 20) }}...</td>
                                     <td>{{ substr($dish->description, 0, 20) }}...</td>
-                                    <td>€{{ $dish->price }}</td>
+                                    <td>{{ number_format($dish->price, 2, ',', '.') }}€</td>
                                     <td>
                                         @if ($dish->visible == 0)
                                             <span class="badge bg-danger">Non Disponibile</span>
