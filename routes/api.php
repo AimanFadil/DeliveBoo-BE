@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\TypologyController as TypologyController;
 
 use App\Http\Controllers\Api\DisheController as DisheController;
 
+use App\Http\Controllers\Api\Orders\OrderController as OrderController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,3 +32,7 @@ Route::get('/typology', [TypologyController::class, 'index']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('orders/generate',[OrderController::class, 'generate']);
+Route::post('orders/makePayment',[OrderController::class, 'makePayment']);
+Route::post('orders/customer',[OrderController::class, 'customer']);
