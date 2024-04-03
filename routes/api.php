@@ -35,3 +35,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('orders/generate',[OrderController::class, 'generate']);
 Route::post('orders/makePayment',[OrderController::class, 'makePayment']);
+Route::post('orders/customer',[OrderController::class, 'customer']);
