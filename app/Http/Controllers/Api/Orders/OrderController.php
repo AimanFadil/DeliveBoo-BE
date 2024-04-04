@@ -32,7 +32,7 @@ class OrderController extends Controller
         $order->save();
 
         foreach($form_data['products'] as $product){
-            $dishe_id = $product['dishe_id'];
+            $dishe_id = $product['id'];
             $number_dishes = $product['quantity'];
             $order->dishes()->attach($dishe_id, ['number_dishes' => $number_dishes]);
         };
