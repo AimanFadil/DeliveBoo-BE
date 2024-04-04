@@ -14,9 +14,10 @@ class DashBoardController extends Controller
     public function index()
     {
         $restaurant =  Restaurant::where('user_id', '=', Auth::id())->first();
-        $orders = Order::where('restaurant_id', $restaurant->id)->get();
         $typologies = [];
+        $orders = [];
         if ($restaurant != null ) {
+            $orders = Order::where('restaurant_id', $restaurant->id)->get();
 
             $typologies = $restaurant->typologies()->get();
             

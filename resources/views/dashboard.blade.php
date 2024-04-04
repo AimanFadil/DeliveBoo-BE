@@ -25,82 +25,84 @@
                             @endforeach
                         </div>
                     </div>
-                    <table class="table table-success table-striped border-success container-shadow">
-                        <thead>
-                            <tr class="border">
-                                {{-- <th class="w-dish text-success">Nome piatto</th>s --}}
-                                <th class="text-success">data e ora</th>
-                                <th class="text-success">Prezzo</th>
-                                <th class="text-success">Nome cliente</th>
-                                <th class="text-success">e-mail cliente</th>
-                                <th class="text-success">indirizzo cliente</th>
-                                <th class="text-success">telefono cliente</th>
+                    @if (count($orders) != 0)
+                        <table class="table table-success table-striped border-success container-shadow">
+                            <thead>
+                                <tr class="border">
+                                    {{-- <th class="w-dish text-success">Nome piatto</th>s --}}
+                                    <th class="text-success">data e ora</th>
+                                    <th class="text-success">Prezzo</th>
+                                    <th class="text-success">Nome cliente</th>
+                                    <th class="text-success">e-mail cliente</th>
+                                    <th class="text-success">indirizzo cliente</th>
+                                    <th class="text-success">telefono cliente</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($orders as $order)
-                                <tr>
-                                    {{-- <td>
-                                        <div class="h-100 w-100 ">
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($orders as $order)
+                                    <tr>
+                                        <td>
+                                            <div class="h-100 w-100 ">
 
-                                            <a href="{{ route('admin.order.show', ['order' => $order->id]) }}"
-                                                class=" hover-show-ordere">
-                                                {{ $order->name }}</a>
-                                        </div> 
-                                    </td> --}}
-                                    <td>{{ $order->created_at }}</td>
-                                    <td>{{ number_format($order->price, 2, ',', '.') }}€</td>
-                                    <td>{{ $order->name }}</td>
-                                    <td>
-                                        {{ $order->mail }}
-                                    </td>
-                                    <td>
-                                        {{ $order->address }}
-                                    </td>
-                                    <td>
-                                        @if ($order->phone != null)
-                                            <span class="badge bg-danger">{{ $order->phone }}</span>
-                                        @else
-                                            <span class="badge bg-success">non inserito</span>
-                                        @endif
-                                        {{-- <div class="d-flex w-100">
+                                                <a href="{{ route('admin.order.show', ['order' => $order->id]) }}"
+                                                    class=" hover-show-ordere">
+                                                    {{ $order->created_at }}</a>
+                                            </div>
+                                        </td>
+                                        {{-- <td>{{ $order->created_at }}</td> --}}
+                                        <td>{{ number_format($order->price, 2, ',', '.') }}€</td>
+                                        <td>{{ $order->name }}</td>
+                                        <td>
+                                            {{ $order->mail }}
+                                        </td>
+                                        <td>
+                                            {{ $order->address }}
+                                        </td>
+                                        <td>
+                                            @if ($order->phone != null)
+                                                <span class="badge bg-danger">{{ $order->phone }}</span>
+                                            @else
+                                                <span class="badge bg-success">non inserito</span>
+                                            @endif
+                                            {{-- <div class="d-flex w-100">
 
 
-                                            <span>
-                                                <div class="tooltip_">
-                                                    <a href="{{ route('admin.order.edit', ['order' => $order->id]) }}"
-                                                        class="btn btn-sm btn-warning me-2 mt-1">
-                                                        <i class="fa-solid fa-pen-to-square "></i>
-                                                        <span
-                                                            class="tooltiptext_ colorgreen fw-bold border border-success">Modifica</span>
-                                                    </a>
-                                                </div>
-                                            </span>
-                                            <span class="w-50">
-                                                <div class="tooltip_">
-                                                    <form action="{{ route('admin.dish.destroy', ['dish' => $dish->id]) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
+                                                <span>
+                                                    <div class="tooltip_">
+                                                        <a href="{{ route('admin.order.edit', ['order' => $order->id]) }}"
+                                                            class="btn btn-sm btn-warning me-2 mt-1">
+                                                            <i class="fa-solid fa-pen-to-square "></i>
+                                                            <span
+                                                                class="tooltiptext_ colorgreen fw-bold border border-success">Modifica</span>
+                                                        </a>
+                                                    </div>
+                                                </span>
+                                                <span class="w-50">
+                                                    <div class="tooltip_">
+                                                        <form action="{{ route('admin.dish.destroy', ['dish' => $dish->id]) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
 
-                                                        <button type="button" class="btn_delete btn btn-sm btn-danger mt-1"
-                                                            data-bs-toggle="modal" data-bs-target="#modal_delete"
-                                                            data-dishid="{{ $dish->id }}"
-                                                            data-dishname="{{ $dish->name }}" data-type="dish">
-                                                            <i class="fa-solid fa-trash "></i>
-                                                        </button>
-                                                        <span
-                                                            class="tooltiptext_ colorgreen fw-bold border border-success">Elimina</span>
-                                                    </form>
-                                                </div>
-                                            </span> --}}
+                                                            <button type="button" class="btn_delete btn btn-sm btn-danger mt-1"
+                                                                data-bs-toggle="modal" data-bs-target="#modal_delete"
+                                                                data-dishid="{{ $dish->id }}"
+                                                                data-dishname="{{ $dish->name }}" data-type="dish">
+                                                                <i class="fa-solid fa-trash "></i>
+                                                            </button>
+                                                            <span
+                                                                class="tooltiptext_ colorgreen fw-bold border border-success">Elimina</span>
+                                                        </form>
+                                                    </div>
+                                                </span> --}}
             </div>
             </td>
             </tr>
             @endforeach
             </tbody>
             </table>
+            @endif
         @else
             <div class="container">
                 <div class="row">
