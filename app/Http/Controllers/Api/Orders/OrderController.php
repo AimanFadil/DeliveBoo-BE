@@ -29,11 +29,11 @@ class OrderController extends Controller
         $order->restaurant_id = $form_data['restaurant_id'];
         $order->save();
 
-        // foreach($form_data['products'] as $product){
-        //     $dishe_id = $product['id'];
-        //     $number_dishes = $product['number_dishes'];
-        //     $order->dishes()->attach($dishe_id, ['number_dishe' => $number_dishes]);
-        // };
+        foreach($form_data['products'] as $product){
+            $dishe_id = $product['dishe_id'];
+            $number_dishes = $product['number_dishes'];
+            $order->dishes()->attach($dishe_id, ['number_dishes' => $number_dishes]);
+        };
         // $order->dishes()->sync(
         //         $request->products
         //         // [$request->products['number_dishes']],
