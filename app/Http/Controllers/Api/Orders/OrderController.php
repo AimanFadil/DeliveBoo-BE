@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Orders\OrderRequest;
 use App\Models\Order;
+use App\Models\Dishe;
 
 class OrderController extends Controller
 {
@@ -57,7 +58,8 @@ class OrderController extends Controller
         $products = $request->products;
         $amount= null;
         foreach($products as $product){
-            $prices =intval($product['price'])  * intval( $product['quantity']);
+            $dish = Dishe::find($product['id']);
+            $prices =intval($dish->price) * intval( $product['quantity']);
             $amount += $prices;
         };
        $result = $gateway->transaction()->sale([
@@ -78,7 +80,7 @@ class OrderController extends Controller
             
             $data = [
                 'success' => false,
-                'message' => "noooo"
+                'message' => "nooo"
             ];
             return response()->json($data,401);
        }
