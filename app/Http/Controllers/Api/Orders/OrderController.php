@@ -13,8 +13,10 @@ class OrderController extends Controller
     public function customer(Request $request){
         $form_data = $request->all();
         $price = null;
+        $restaurant_id = '';
         foreach($form_data['products'] as $product){
-            $prices =intval($product['price'])  * intval( $product['number_dishes']);
+            $prices =intval($product['price'])  * intval( $product['quantity']);
+            $restaurant_id = $product['restaurant_id'];
             $price += $prices;
         };
         $order = new Order();
@@ -26,12 +28,12 @@ class OrderController extends Controller
         if(array_key_exists('phone', $form_data)){
             $order->phone = $form_data['phone'];
         }
-        $order->restaurant_id = $form_data['restaurant_id'];
+        $order->restaurant_id = $restaurant_id;
         $order->save();
 
         foreach($form_data['products'] as $product){
             $dishe_id = $product['dishe_id'];
-            $number_dishes = $product['number_dishes'];
+            $number_dishes = $product['quantity'];
             $order->dishes()->attach($dishe_id, ['number_dishes' => $number_dishes]);
         };
         // $order->dishes()->sync(
