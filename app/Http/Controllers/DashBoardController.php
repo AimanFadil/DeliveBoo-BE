@@ -17,7 +17,7 @@ class DashBoardController extends Controller
         $typologies = [];
         $orders = [];
         if ($restaurant != null ) {
-            $orders = Order::where('restaurant_id', $restaurant->id)->get();
+            $orders = Order::where('restaurant_id', $restaurant->id)->orderBy('created_at', 'desc')->get();
 
             $typologies = $restaurant->typologies()->get();
             
