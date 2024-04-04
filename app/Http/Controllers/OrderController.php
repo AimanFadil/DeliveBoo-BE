@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -47,7 +47,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        $dishes = $order->dishes()->withPivot('number_dishes')->get();
+        
+        return view('admin.orders.show', compact('order','dishes'));
     }
 
     /**

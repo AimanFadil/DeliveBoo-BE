@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Restaurant;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -14,11 +15,13 @@ class DashBoardController extends Controller
     {
         $restaurant =  Restaurant::where('user_id', '=', Auth::id())->first();
         $typologies = [];
+        $orders = [];
         if ($restaurant != null ) {
+            $orders = Order::where('restaurant_id', $restaurant->id)->get();
 
             $typologies = $restaurant->typologies()->get();
             
         }
-        return view('dashboard', compact('restaurant', 'typologies'));
+        return view('dashboard', compact('restaurant', 'typologies','orders'));
     }
 }
