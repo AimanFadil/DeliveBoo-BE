@@ -5,16 +5,36 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 d-flex justify-content-center mt-5">
-                    <div class="card border-success container-shadow bg-forms" style="width:80%;">
-                        {{ $order->created_at }}
+                    <div class="card border-success container-shadow bg-forms p-3" style="width:80%;">
+                        <div>Ordine eseguito il: <strong> {{ substr($order->created_at, 0, 10) }}</strong></div>
+                        <div>Alle: <strong>{{ substr($order->created_at, 10, 20) }} </strong></div>
+                        <div>
+
+
+
+                            <ul class="list-unstyled ">
+                                <li> Da:<strong class="ms-4 ps-5">{{ $order->name }}</strong></li>
+                                <li>email: <strong class="ms-4 ps-4">{{ $order->mail }}</strong></li>
+                                <li>indirizzo: <strong class="ms-4">{{ $order->address }}</strong></li>
+                                @if ($order->phone != null)
+                                    <li>telefono: <strong class="ms-3">{{ $order->phone }}</strong></li>
+                                @endif
+                            </ul>
+                        </div>
+                        <div>
+                            Totale:
+                            <strong>
+                                {{ number_format($order->price, 2, ',', '.') }}€
+                            </strong>
+                        </div>
                         @foreach ($dishes as $dish)
                             {{-- card head --}}
-                            <div class="card-head d-flex ">
+                            <div class="card-head d-flex mt-3">
                                 <div class="card-head col-5">
 
                                 </div>
-                                <div class="col-8 text-center align-self-center">
-                                    <h5 class="card-title fs-4  my-4 fw-bold colorgreen ">{{ $dish->name }}</h5>
+                                <div class="col-12">
+                                    <h5 class="card-title fw-bold colorgreen ">{{ $dish->name }}</h5>
                                     <p class="card-text">{{ $dish->description }}</p>
                                 </div>
                             </div>
@@ -22,12 +42,18 @@
                             {{-- card body --}}
                             <div class="m-4  container-shadow ">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"> <span class="colorgreen fw-semibold">Prezzo:</span>
-                                        {{ $dish->pivot->number_dishes }} *
-                                        {{ $dish->price }}
+                                    <li class="list-group-item"> <span class="colorgreen fw-semibold">Prezzo singolo:</span>
+                                        {{ number_format($dish->price, 2, ',', '.') }}
                                         €</li>
+                                    <li class="list-group-item"><span class="colorgreen fw-semibold">Quantità:</span>
+                                        {{ $dish->pivot->number_dishes }}
+                                    </li>
                                     <li class="list-group-item"><span class="colorgreen fw-semibold">Ingredienti:</span>
                                         {{ $dish->ingredients }}</li>
+                                    <li class="list-group-item"><span class="colorgreen fw-semibold">Descrizione:</span>
+                                        {{ $dish->description ?? 'Descrizione non presente' }}</li>
+                                    <li class="list-group-item"><span class="colorgreen fw-semibold">Totale piatto:</span>
+                                        {{ number_format($dish->price * $dish->pivot->number_dishes, 2, ',', '.') }} €</li>
                                 </ul>
                             </div>
                         @endforeach
