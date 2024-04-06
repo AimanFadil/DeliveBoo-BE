@@ -25,6 +25,17 @@ body {
     }
 }
 
+.btn_add_ {
+    background-color: rgb(254, 107, 107);
+    color: white;
+
+    &:hover {
+        background-color: rgb(255, 61, 61);
+        color: white;
+    }
+}
+
+
 /* colors e hovers  */
 .colorgreen {
     color: rgb(21, 131, 100);
@@ -175,6 +186,15 @@ body {
     color: rgb(249, 119, 119);
     --_p: 100%;
     --_s: .3s;
+}
+
+.hover-navitem-offcanca {
+    color: rgb(21, 131, 100);
+
+    &:hover {
+        color: rgb(21, 131, 100);
+        background-color: rgba(201, 253, 238, 0.653);
+    }
 }
 
 .size-18 {
@@ -362,4 +382,11 @@ $icon-base-size: 20px;
 
 .input-checkbox:checked {
     box-shadow: inset 0 0 0 7px rgb(21, 131, 100);
+}
+
+@media screen and (max-width: 576px) {
+    .size-txtjumbo {
+        font-size: 17px;
+
+    }
 }

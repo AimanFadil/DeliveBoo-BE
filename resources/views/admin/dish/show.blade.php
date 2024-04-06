@@ -8,14 +8,14 @@
                     <div class="card border-success container-shadow bg-forms" style="width:80%;">
 
                         {{-- card head --}}
-                        <div class="card-head d-flex ">
-                            <div class="card-head col-5">
-                                <div class="w-100 container-shadow m-4">
+                        <div class="card-head d-flex flex-wrap">
+                            <div class="card-head col-9 col-md-5 m-4">
+                                <div class="w-100 container-shadow ">
                                     <img src=" {{ $dish->image == null ? 'https://www.biochetasi.it/wp-content/uploads/2019/09/I-bambini-e-il-cibo-spazzatura.-Meglio-non-esagerare-1-biochetasi-1000x600.jpg' : asset('/storage/' . $dish->image) }}"
                                         alt="" class="card-img-top">
                                 </div>
                             </div>
-                            <div class="col-8 text-center align-self-center">
+                            <div class="col-12 col-md-6 text-center align-self-center">
                                 <h5 class="card-title fs-4  my-4 fw-bold colorgreen ">{{ $dish->name }}</h5>
                                 <p class="card-text">{{ $dish->description }}</p>
                             </div>
