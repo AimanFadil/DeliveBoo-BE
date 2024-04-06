@@ -37,10 +37,10 @@
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="px-2 py-1 d-block d-md-none btn_add_" type="button" data-bs-toggle="offcanvas"
+                    href="#offcanvasExample" role="button" aria-controls="offcanvasExample"
+                    aria-label="{{ __('Toggle navigation') }}">
+                    <i class="fa-solid fa-bars fa-lg" style="color: #ffffff;"></i></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -59,10 +59,9 @@
                                     href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
 
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item ">
                                 <a class="nav-link hover-navitem fw-bolder {{ Route::currentRouteName() == 'dashboard' ?: '' }}"
                                     href="{{ route('admin.dish.index') }}">{{ __('Piatti') }}</a>
-
                             </li>
                         @endif
                     </ul>
@@ -114,14 +113,104 @@
                 </div>
             </div>
     </div>
+
+    {{-- offcanvas on in mobile  --}}
+    <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="colorgreen offcanvas-title fs-4 text-center green_color fw-semibold my-2"
+                id="offcanvasExampleLabel">
+                Menu
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body container">
+            <div class="row justify-content-center">
+                <div class="col-12 ">
+                    <div class="text-center">
+                        <ul class="navbar-nav me-auto ">
+                            <li class="nav-item my-1">
+                                <div>
+                                    <a class="nav-link hover-navitem-offcanca fw-bolder" href="{{ url('/') }}"><i
+                                            class="fa-solid fa-house me-1"></i>{{ __('Home') }}</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <ul class="navbar-nav me-auto ">
+                            @if (Auth::check() && Auth::user()->restaurant()->exists())
+                                <li class="nav-item my-1">
+                                    <a class="nav-link hover-navitem-offcanca fw-bolder {{ Route::currentRouteName() == 'dashboard' ?: '' }}"
+                                        href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+
+                                </li>
+                                <li class="nav-item  my-1">
+                                    <a class="nav-link hover-navitem-offcanca fw-bolder {{ Route::currentRouteName() == 'dashboard' ?: '' }}"
+                                        href="{{ route('admin.dish.index') }}">{{ __('Piatti') }}</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                    <!-- Right Side Of Navbar -->
+                    <div class="text-center">
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Authentication Links -->
+                            @guest
+                                <li class="nav-item my-1">
+                                    <a class="nav-link hover-navitem-offcanca fw-bolder "
+                                        href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                                @if (Route::has('register'))
+                                    <li class="nav-item my-1">
+                                        <a class="nav-link hover-navitem-offcanca fw-bolder  "
+                                            href="{{ route('register') }}">{{ __('Register') }}</a>
+
+                                    </li>
+                                @endif
+                            @else
+                                <li class="nav-item dropdown my-1">
+                                    <a id="navbarDropdown"
+                                        class=" nav-link dropdown-toggle hover-navitem-offcanca fw-bolder" href="#"
+                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" v-pre>
+                                        <i class="fa-regular fa-user me-1"></i>
+                                        {{ Auth::user()->name }}
+
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right colorgreen"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item colorgreen red-hover"
+                                            href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+                                        <a class="dropdown-item colorgreen red-hover"
+                                            href="{{ url('profile') }}">{{ __('Profile') }}</a>
+                                        <a class="dropdown-item colorgreen red-hover" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none colorgreen">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @endguest
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </nav>
     <div class="container-fluid vh-100">
         <div class="row h-100">
 
-            <main class="col-md-9  col-lg-12 p-0 m-0 ">
+            <main class=" p-0 m-0 ">
                 @yield('content')
             </main>
-
 
         </div>
     </div>

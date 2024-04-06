@@ -32,10 +32,10 @@
                                     {{-- <th class="w-dish text-success">Nome piatto</th>s --}}
                                     <th class="text-success">data e ora</th>
                                     <th class="text-success">Prezzo</th>
-                                    <th class="text-success">Nome cliente</th>
-                                    <th class="text-success">e-mail cliente</th>
+                                    <th class="text-success ">Nome cliente</th>
+                                    <th class="text-success d-none d-lg-block">e-mail cliente</th>
                                     <th class="text-success">indirizzo cliente</th>
-                                    <th class="text-success">telefono cliente</th>
+                                    <th class="text-success d-none d-lg-block">telefono cliente</th>
 
                                 </tr>
                             </thead>
@@ -53,13 +53,13 @@
                                         {{-- <td>{{ $order->created_at }}</td> --}}
                                         <td>{{ number_format($order->price, 2, ',', '.') }}€</td>
                                         <td>{{ $order->name }}</td>
-                                        <td>
+                                        <td class=" d-none d-lg-block">
                                             {{ $order->mail }}
                                         </td>
                                         <td>
                                             {{ $order->address }}
                                         </td>
-                                        <td>
+                                        <td class=" d-none d-lg-block ">
                                             @if ($order->phone != null)
                                                 <span class="badge bg-danger">{{ $order->phone }}</span>
                                             @else

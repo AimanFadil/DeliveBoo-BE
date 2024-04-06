@@ -6,14 +6,16 @@
 
             <div class="col-6 px-3 ">
             </div>
-            <div class="col-6 d-flex flex-wrap align-items-center px-3 fs-4 text-center">
+            <div class="col-12 col-md-6 d-flex flex-wrap align-items-center px-3 fs-4 text-center">
                 <div class="col-12 mb-5">
                     <h1 class="fw-bold colorgreen text-center text-shadow"> Benvenuti su Deliveboo - Il Vostro Gestionale di
                         Delivery
                         Preferito
                     </h1>
                 </div>
-                <div class="col-12 colorgreen mt-5 fw-semibold">
+                <div class="col-6 d-block d-md-none">
+                </div>
+                <div class="col-6 col-md-12 colorgreen mt-5  fw-semibold size-txtjumbo">
                     Ciao e benvenuti nel mondo di Deliveboo! Siamo lieti di darvi il benvenuto
                     nella nostra piattaforma di gestione di delivery, progettata per semplificare
                     e ottimizzare il vostro business culinario.
@@ -33,13 +35,13 @@
                     <h1 class="fw-bolder colorgreen_lite text-center  text-shadow">Chi Siamo</h1>
                 </div>
                 <div
-                    class="col-6 d-flex align-items-center  fs-5 fw-semibold text-center background-green-footer text-white rounded-5 p-4 container-shadow">
+                    class="col-12 col-lg-6 d-flex align-items-center  fs-5 fw-semibold text-center background-green-footer text-white rounded-5 p-4 container-shadow">
                     Deliveboo è nato con l'obiettivo di fornire agli operatori nel settore del food
                     delivery uno strumento potente e intuitivo per gestire e far crescere le loro attività.
                     Con anni di esperienza nel settore e una passione per l'innovazione, ci impegniamo a fornire
                     soluzioni che soddisfino le esigenze specifiche dei nostri clienti.
                 </div>
-                <div class="col-6 px-3 ">
+                <div class="col-12 col-lg-6 px-3 ">
                     <img src="https://creare-sito-web-gratis.it/wp-content/uploads/2021/05/pagina-chi-siamo-1024x480.png"
                         alt="" class="w-100 my-4">
                 </div>
@@ -51,11 +53,11 @@
                 <div class="col-12 mb-4">
                     <h1 class="fw-bolder red text-center  text-shadow">Cosa Offriamo</h1>
                 </div>
-                <div class="col-6 px-3 ">
+                <div class="col-12 col-lg-6 px-3 ">
                     <img src=" https://www.gestionalesulweb.it/img/imghome.jpg" alt="" class="w-100 my-4">
                 </div>
 
-                <div class="col-6 d-flex align-items-center px-3 fs-5 fw-semibold text-center">
+                <div class="col-12 col-lg-6 d-flex align-items-center px-3 fs-5 fw-semibold text-center">
                     La nostra piattaforma offre una vasta gamma di funzionalità progettate per semplificare
                     ogni aspetto del vostro servizio di consegna. Dal gestire gli ordini in arrivo alla
                     gestione del menu, dall'ottimizzazione delle consegne alla gestione dei pagamenti,
@@ -70,14 +72,14 @@
                     <h1 class="fw-bolder colorgreen_lite text-center text-shadow">Come Funziona</h1>
                 </div>
                 <div
-                    class="col-6 d-flex align-items-center fs-5 fw-semibold text-center  background-green-footer rounded-5 text-white p-4 container-shadow">
+                    class="col-12 col-lg-6 d-flex align-items-center fs-5 fw-semibold text-center  background-green-footer rounded-5 text-white p-4 container-shadow">
                     Con Deliveboo, gestire il vostro delivery non è mai stato così facile. La nostra interfaccia utente
                     intuitiva vi permette di monitorare gli ordini in tempo reale, gestire il menu con facilità e
                     coordinarele
                     consegne con precisione. Che siate un piccolo ristorante locale o una catena di consegna a domicilio in
                     crescita, Deliveboo è la soluzione su misura per voi.
                 </div>
-                <div class="col-6 px-3 ">
+                <div class="col-12 col-lg-6 px-3 ">
                     <img src=" https://www.pianooperativosicurezza.com/immagini_pagine/18-06-2018/1529318066-81-.gif"
                         alt="" class="w-100 my-4">
                 </div>
@@ -91,11 +93,11 @@
                 <div class="col-12 mb-4">
                     <h1 class="fw-bolder red text-center text-shadow"> La Vostra Soddisfazione è la Nostra Priorità</h1>
                 </div>
-                <div class="col-6 px-3 ">
+                <div class="col-12 col-lg-6 px-3 ">
                     <img src=" https://theadvisorybox.com/wp-content/uploads/2021/06/chi-siamo-foto@2x-1024x696.png"
                         alt="" class="w-100 my-4">
                 </div>
-                <div class="col-6 d-flex align-items-center px-3 fs-5 fw-semibold text-center ">
+                <div class="col-12 col-lg-6 d-flex align-items-center px-3 fs-5 fw-semibold text-center ">
                     Il vostro successo è il nostro successo. Ci impegniamo a fornire un servizio clienti impeccabile, ad
                     ascoltare i vostri feedback e a lavorare costantemente per migliorare la nostra piattaforma. Siamo qui
                     per supportarvi in ogni fase del vostro percorso imprenditoriale nel settore del delivery.
@@ -123,7 +125,7 @@
 
                 <div class="row d-flex justify-content-between px-5">
                     {{-- contacts  --}}
-                    <div class="col-4 p-4 text-white ">
+                    <div class="col-12 col-lg-4 p-4 text-white ">
                         <h5 class=" fw-bold">Contatti:</h5>
 
                         <div class="my-4 red-hover">
@@ -154,7 +156,7 @@
                     </div>
 
                     {{-- partner section --}}
-                    <div class="col-4 p-4 d-flex flex-wrap text-white">
+                    <div class="col-12 col-md-4 p-4 d-flex flex-wrap text-white">
                         <div class="col-12">
                             <h5 class=" fw-bold">Alcuni dei nostri partner:</h5>
                         </div>
