@@ -14,8 +14,8 @@
 
                             <ul class="list-unstyled ">
                                 <li> Da:<strong class="ms-4 ps-5">{{ $order->name }}</strong></li>
-                                <li>email: <strong class="ms-4 ps-4">{{ $order->mail }}</strong></li>
-                                <li>indirizzo: <strong class="ms-4">{{ $order->address }}</strong></li>
+                                <li>Email: <strong class="ms-4 ps-4">{{ $order->mail }}</strong></li>
+                                <li>Indirizzo: <strong class="ms-4">{{ $order->address }}</strong></li>
                                 @if ($order->phone != null)
                                     <li>telefono: <strong class="ms-3">{{ $order->phone }}</strong></li>
                                 @endif

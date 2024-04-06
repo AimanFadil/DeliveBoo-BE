@@ -24,7 +24,7 @@
                                 <th class="text-success ">Descrizione</th>
                                 <th class="text-success">Prezzo</th>
                                 <th class="text-success">Disponibile</th>
-                                <th class="text-success">Tools</th>
+                                <th class="text-success">Opzioni</th>
 
                             </tr>
                         </thead>
