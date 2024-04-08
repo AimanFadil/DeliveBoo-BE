@@ -32,7 +32,7 @@
                         @foreach ($dishes as $dish)
                             {{-- card head --}}
                             <div class="card-head d-flex mt-3">
-                                <div class="card-head col-5">
+                                <div class="card-head ">
 
                                 </div>
                                 <div class="col-12">
