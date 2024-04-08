@@ -6,8 +6,10 @@
             <div class="row">
                 <div class="col-12 d-flex justify-content-center mt-5">
                     <div class="card border-success container-shadow bg-forms p-3" style="width:80%;">
-                        <div>Ordine eseguito il: <strong> {{ substr($order->created_at, 0, 10) }}</strong></div>
-                        <div>Alle: <strong>{{ substr($order->created_at, 10, 20) }} </strong></div>
+                        <div>Ordine eseguito il: <strong>
+                                {{ $data_italiana = strftime('%d/%m/%Y', strtotime($order->created_at)) }}</strong></div>
+                        <div>Alle: <strong>{{ $ora_italiana = date(' H:i', strtotime($order->created_at)) }} </strong>
+                        </div>
                         <div>
 
 

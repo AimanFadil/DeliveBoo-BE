@@ -47,7 +47,7 @@
 
                                                 <button type="button" class="btn btn-order"
                                                     onclick="location.href='{{ route('admin.order.show', ['order' => $order->id]) }}'">
-                                                    {{ $order->created_at }}
+                                                    {{ $data_italiana = strftime('%d/%m/%Y %H:%M', strtotime($order->created_at)) }}
                                                 </button>
                                             </div>
                                         </td>
