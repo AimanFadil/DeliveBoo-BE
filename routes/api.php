@@ -28,6 +28,7 @@ Route::get('/restaurant/menu/{id}', [DisheController::class, 'index']);
 Route::get('/restaurant/{id}', [RestaurantController::class, 'show']);
 Route::get('/typology', [TypologyController::class, 'index']);
 
+Route::post('/restaurant/mail', [RestaurantController::class, 'mails']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

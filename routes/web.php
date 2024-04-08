@@ -8,7 +8,9 @@ use App\Http\Controllers\DashBoardController as DashBoardController;
 use App\Http\Controllers\OrderController as OrderController;
 use App\Http\Controllers\RestaurantController as RestaurantController;
 
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContattoRistoratore;
+use App\Mail\ContattoUtente;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +26,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function () {
+    Mail::to('aimanbello2001@gmail.com')->send(new ContattoRistoratore);
+}); 
+
+Route::get('/test2', function () {
+    Mail::to('aimanbello2001@gmail.com')->send(new ContattoUtente);
+});
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashBoardController::class, 'index'])->name('dashboard');
     Route::resource('/dish', DisheController::class);
