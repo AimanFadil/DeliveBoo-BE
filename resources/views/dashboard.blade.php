@@ -30,12 +30,12 @@
                             <thead>
                                 <tr class="border">
                                     {{-- <th class="w-dish text-success">Nome piatto</th>s --}}
-                                    <th class="text-success">data e ora</th>
+                                    <th class="text-success">Data e Ora</th>
                                     <th class="text-success">Prezzo</th>
                                     <th class="text-success ">Nome cliente</th>
-                                    <th class="text-success d-none d-lg-block">e-mail cliente</th>
-                                    <th class="text-success">indirizzo cliente</th>
-                                    <th class="text-success d-none d-lg-block">telefono cliente</th>
+                                    <th class="text-success d-none d-lg-block">E-mail cliente</th>
+                                    <th class="text-success">Indirizzo cliente</th>
+                                    <th class="text-success d-none d-lg-block">Telefono cliente</th>
 
                                 </tr>
                             </thead>
