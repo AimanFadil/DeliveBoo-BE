@@ -25,6 +25,7 @@ use App\Http\Controllers\Api\Orders\OrderController as OrderController;
 
 Route::get('/restaurant', [RestaurantController::class, 'index']);
 Route::get('/restaurant/menu/{id}', [DisheController::class, 'index']);
+Route::get('/orders/{id}', [RestaurantController::class, 'order']);
 Route::get('/restaurant/{id}', [RestaurantController::class, 'show']);
 Route::get('/typology', [TypologyController::class, 'index']);
 

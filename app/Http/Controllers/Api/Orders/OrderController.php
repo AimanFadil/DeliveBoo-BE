@@ -11,6 +11,9 @@ use App\Models\Dishe;
 
 class OrderController extends Controller
 {
+
+    
+
     public function customer(Request $request){
         $form_data = $request->all();
         $price = 0.0; // Inizializza come float

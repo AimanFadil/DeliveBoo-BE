@@ -103,6 +103,9 @@
             @endforeach
             </tbody>
             </table>
+            <div>
+                <canvas id="myChart" data-rest="{{ $restaurant->id }}"></canvas>
+            </div>
             @endif
         @else
             <div class="container">
