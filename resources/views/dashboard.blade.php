@@ -45,9 +45,10 @@
                                         <td>
                                             <div class="h-100 w-100 ">
 
-                                                <a href="{{ route('admin.order.show', ['order' => $order->id]) }}"
-                                                    class=" hover-show-ordere">
-                                                    {{ $order->created_at }}</a>
+                                                <button type="button" class="btn btn-order"
+                                                    onclick="location.href='{{ route('admin.order.show', ['order' => $order->id]) }}'">
+                                                    {{ $order->created_at }}
+                                                </button>
                                             </div>
                                         </td>
                                         {{-- <td>{{ $order->created_at }}</td> --}}

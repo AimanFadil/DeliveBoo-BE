@@ -13,17 +13,16 @@ class OrderController extends Controller
 {
     public function customer(Request $request){
         $form_data = $request->all();
-        $price = null;
+        $price = 0.0; // Inizializza come float
         $restaurant_id = '';
         foreach($form_data['products'] as $product){
-            $prices =intval($product['price'])  * intval( $product['quantity']);
+            $prices = floatval($product['price']) * floatval($product['quantity']);
             $restaurant_id = $product['restaurant_id'];
             $price += $prices;
         };
         $order = new Order();
         $order->price = $price;
         $order->name = $form_data['name'];
-        // $order->price = $form_data['price'];
         $order->address = $form_data['address'];
         $order->mail = $form_data['mail'];
         if(array_key_exists('phone', $form_data)){
@@ -32,20 +31,17 @@ class OrderController extends Controller
         $order->restaurant_id = $restaurant_id;
         $order->save();
 
+        $order->created_at = $order->created_at->addHours(2);
+        $order->save(); 
+
         foreach($form_data['products'] as $product){
             $dishe_id = $product['id'];
             $number_dishes = $product['quantity'];
             $order->dishes()->attach($dishe_id, ['number_dishes' => $number_dishes]);
         };
-        // $order->dishes()->sync(
-        //         $request->products
-        //         // [$request->products['number_dishes']],
-        //     );
-        
     }
 
     public function generate(Request $request,Gateway $gateway){
-        // dd($gateway->clientToken()->generate());
         $token = $gateway->clientToken()->generate();
         $data = [
             'success' => true,
@@ -56,34 +52,36 @@ class OrderController extends Controller
 
     public function makePayment(OrderRequest $request,Gateway $gateway){
         $products = $request->products;
-        $amount= null;
+        $amount = 0.0; 
         foreach($products as $product){
             $dish = Dishe::find($product['id']);
-            $prices =intval($dish->price) * intval( $product['quantity']);
+            $prices = floatval($dish->price) * floatval($product['quantity']);
             $amount += $prices;
         };
-       $result = $gateway->transaction()->sale([
-        'amount' => $amount,
-        'paymentMethodNonce' => $request->token,
-        'options' => [
-            'submitForSettlement' => true
-        ]
-       ]);
 
-       if($result->success){
+        // Facoltativamente arrotonda per scopi di visualizzazione
+        $amountForTransaction = round($amount, 2); 
+
+        $result = $gateway->transaction()->sale([
+            'amount' => $amountForTransaction,
+            'paymentMethodNonce' => $request->token,
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+
+        if($result->success){
             $data = [
                 'success' => true,
-                'message' => "evvai"
+                'message' => "Pagamento avvenuto con successo!"
             ];
             return response()->json($data,200);
-       }else{
-            
+        }else{
             $data = [
                 'success' => false,
-                'message' => "nooo"
+                'message' => "Pagamento fallito. Si prega di riprovare."
             ];
             return response()->json($data,401);
-       }
-        return 'makePayment';
+        }
     }
 }
