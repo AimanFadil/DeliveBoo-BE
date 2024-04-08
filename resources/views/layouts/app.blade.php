@@ -72,12 +72,12 @@
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link hover-navitem fw-bolder"
-                                    href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link hover-navitem fw-bolder "
-                                        href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        href="{{ route('register') }}">{{ __('Registrati') }}</a>
 
                                 </li>
                             @endif

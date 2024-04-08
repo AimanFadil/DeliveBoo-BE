@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('restaurant_id')->nullable();
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('set null');
-            $table->dateTime('date_delivery');
+            // $table->dateTime('date_delivery');
             $table->decimal('price');
             $table->string('name');
             $table->string('mail');
