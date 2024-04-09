@@ -36,7 +36,7 @@
                                         <div class="h-100 w-100 ">
 
                                             <a href="{{ route('admin.dish.show', ['dish' => $dish->id]) }}"
-                                                class=" hover-show-dishe">
+                                                class=" hover-show-dishe text-capitalize">
                                                 {{ $dish->name }}</a>
                                         </div>
                                     </td>

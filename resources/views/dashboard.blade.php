@@ -26,100 +26,105 @@
                         </div>
                     </div>
                     @if (count($orders) != 0)
-                        <table class="table table-success table-striped border-success container-shadow">
-                            <thead>
-                                <tr class="border">
-                                    {{-- <th class="w-dish text-success">Nome piatto</th>s --}}
-                                    <th class="text-success">Data e Ora</th>
-                                    <th class="text-success">Prezzo</th>
-                                    <th class="text-success ">Nome cliente</th>
-                                    <th class="text-success d-none d-lg-block">E-mail cliente</th>
-                                    <th class="text-success">Indirizzo cliente</th>
-                                    <th class="text-success d-none d-lg-block">Telefono cliente</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($orders as $order)
-                                    <tr>
-                                        <td>
-                                            <div class="h-100 w-100 ">
-
-                                                <button type="button" class="btn btn-order"
+                        <div class="d-none d-lg-block mt-4">
+                            <table class="table table-success table-striped border-success container-shadow">
+                                <thead>
+                                    <tr class="border">
+                                        {{-- <th class="w-dish text-success">Nome piatto</th>s --}}
+                                        <th></th>
+                                        <th class="text-success">data e ora</th>
+                                        <th class="text-success text-center">Numero ordine</th>
+                                        <th class="text-success">Prezzo</th>
+                                        <th class="text-success ">Nome cliente</th>
+                                        <th class="text-success">indirizzo cliente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($orders as $order)
+                                        <tr>
+                                            <td>
+                                                <button type="button" class="btn btn-order btn-success p-1 ms-2"
                                                     onclick="location.href='{{ route('admin.order.show', ['order' => $order->id]) }}'">
-                                                    {{ $data_italiana = strftime('%d/%m/%Y %H:%M', strtotime($order->created_at)) }}
+                                                    <i class="fa-solid fa-eye"></i>
                                                 </button>
-                                            </div>
-                                        </td>
-                                        {{-- <td>{{ $order->created_at }}</td> --}}
-                                        <td>{{ number_format($order->price, 2, ',', '.') }}€</td>
-                                        <td>{{ $order->name }}</td>
-                                        <td class=" d-none d-lg-block">
-                                            {{ $order->mail }}
-                                        </td>
-                                        <td>
-                                            {{ $order->address }}
-                                        </td>
-                                        <td class=" d-none d-lg-block ">
-                                            @if ($order->phone != null)
-                                                <span class="badge bg-danger">{{ $order->phone }}</span>
-                                            @else
-                                                <span class="badge bg-success">non inserito</span>
-                                            @endif
-                                            {{-- <div class="d-flex w-100">
+                                            </td>
+                                            <td>
+                                                <div class="">
+                                                    {{ $data_italiana = strftime('%d/%m/%Y %H:%M', strtotime($order->created_at)) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-center ">
+                                                    {{ $order->id }}
+                                                </div>
+                                            </td>
+                                            {{-- <td>{{ $order->created_at }}</td> --}}
+                                            <td>{{ number_format($order->price, 2, ',', '.') }}€</td>
+                                            <td>{{ $order->name }}</td>
+                                            <td>
+                                                {{ $order->address }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
 
+                        {{-- phone format table --}}
+                        <div class="d-block d-lg-none mt-4">
+                            <table class="table table-success table-striped border-success container-shadow">
+                                <thead>
+                                    <tr class="border">
+                                        {{-- <th class="w-dish text-success">Nome piatto</th>s --}}
+                                        <th></th>
+                                        <th class="text-success">data e ora</th>
+                                        <th class="text-success text-center">Numero ordine</th>
+                                        <th class="text-success ">Nome cliente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($orders as $order)
+                                        <tr>
+                                            <td>
+                                                <button type="button" class="btn btn-order btn-success p-1 ms-2"
+                                                    onclick="location.href='{{ route('admin.order.show', ['order' => $order->id]) }}'">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <div class="">
+                                                    {{ $data_italiana = strftime('%d/%m/%Y %H:%M', strtotime($order->created_at)) }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-center ">
+                                                    {{ $order->id }}
+                                                </div>
+                                            </td>
+                                            {{-- <td>{{ $order->created_at }}</td> --}}
+                                            <td>{{ $order->name }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                @else
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 ">
+                                <h2 class="text-success text-center display-4">Crea il tuo ristorante</h2>
+                                <div class="col-12 justify-content-center d-flex">
 
-                                                <span>
-                                                    <div class="tooltip_">
-                                                        <a href="{{ route('admin.order.edit', ['order' => $order->id]) }}"
-                                                            class="btn btn-sm btn-warning me-2 mt-1">
-                                                            <i class="fa-solid fa-pen-to-square "></i>
-                                                            <span
-                                                                class="tooltiptext_ colorgreen fw-bold border border-success">Modifica</span>
-                                                        </a>
-                                                    </div>
-                                                </span>
-                                                <span class="w-50">
-                                                    <div class="tooltip_">
-                                                        <form action="{{ route('admin.dish.destroy', ['dish' => $dish->id]) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-
-                                                            <button type="button" class="btn_delete btn btn-sm btn-danger mt-1"
-                                                                data-bs-toggle="modal" data-bs-target="#modal_delete"
-                                                                data-dishid="{{ $dish->id }}"
-                                                                data-dishname="{{ $dish->name }}" data-type="dish">
-                                                                <i class="fa-solid fa-trash "></i>
-                                                            </button>
-                                                            <span
-                                                                class="tooltiptext_ colorgreen fw-bold border border-success">Elimina</span>
-                                                        </form>
-                                                    </div>
-                                                </span> --}}
-            </div>
-            </td>
-            </tr>
-            @endforeach
-            </tbody>
-            </table>
-            @endif
-        @else
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 ">
-                        <h2 class="text-success text-center display-4">Crea il tuo ristorante</h2>
-                        <div class="col-12 justify-content-center d-flex">
-
-                            <a class="btn btn-sm text-white hover-3 mt-4 "
-                                href="{{ url('restaurants/create') }}">{{ __('Crea il tuo ristorante') }}
-                            </a>
+                                    <a class="btn btn-sm text-white hover-3 mt-4 "
+                                        href="{{ url('restaurants/create') }}">{{ __('Crea il tuo ristorante') }}
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
-            @endif
         </div>
-    </div>
     </div>
 @endsection

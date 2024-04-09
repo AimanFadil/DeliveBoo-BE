@@ -384,6 +384,13 @@ $icon-base-size: 20px;
     box-shadow: inset 0 0 0 7px rgb(21, 131, 100);
 }
 
+.bg-orders {
+    background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-old-paper-texture-parchment-background-image_354980.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px
+}
+
 @media screen and (max-width: 576px) {
     .size-txtjumbo {
         font-size: 17px;
